@@ -309,32 +309,52 @@ class AtariHeadDataset:
         self.max_steps = max_steps_per_trial
         self.discount = discount
 
-    def iter_trials(self) -> Iterator[tuple[str, pathlib.Path, pathlib.Path]]:
-        """Yield (game_name, txt_path, tar_bz2_path) for each trial."""
-        for game_dir in sorted(self.root_dir.iterdir()):
-            if not game_dir.is_dir():
+    def _find_data_dir(self, outer: pathlib.Path) -> pathlib.Path:
+        """
+        Kaggle fully extracts nested archives, producing:
+          outer/outer/<trial>.txt  +  outer/outer/<trial>/<trial>/RZ_*.png
+        Local layout has:
+          outer/<trial>.txt  +  outer/<trial>.tar.bz2
+        Return the directory that actually contains the .txt files.
+        """
+        inner = outer / outer.name
+        if inner.is_dir() and any(inner.glob("*.txt")):
+            return inner   # Kaggle double-nested layout
+        return outer       # local layout
+
+    def iter_trials(self):
+        """Yield (game, txt_path, frames_src) where frames_src is either a
+        pathlib.Path pointing to a tar.bz2 file (local) or to a directory
+        containing pre-extracted PNGs (Kaggle)."""
+        for outer in sorted(self.root_dir.iterdir()):
+            if not outer.is_dir():
                 continue
-            game = game_dir.name.lower().replace("-", "_")
-            txt_files = sorted(game_dir.glob("*.txt"))
+            game = outer.name.lower().replace("-", "_")
+            data_dir = self._find_data_dir(outer)
+            txt_files = sorted(data_dir.glob("*.txt"))
             count = 0
             for txt_path in txt_files:
-                tbz_path = txt_path.with_suffix(".tar.bz2")
-                if tbz_path.exists():
-                    yield game, txt_path, tbz_path
+                tbz = txt_path.with_suffix(".tar.bz2")
+                if tbz.exists():
+                    yield game, txt_path, tbz          # local: tar.bz2
                     count += 1
-                    if self.max_trials and count >= self.max_trials:
-                        break
+                else:
+                    # Kaggle: PNGs in <trial>/<trial>/ subdir
+                    stem = txt_path.stem
+                    png_dir = data_dir / stem / stem
+                    if not png_dir.is_dir():
+                        png_dir = data_dir / stem      # fallback: single level
+                    if png_dir.is_dir():
+                        yield game, txt_path, png_dir  # Kaggle: pre-extracted dir
+                        count += 1
+                if self.max_trials and count >= self.max_trials:
+                    break
 
-    def load_trial(
-        self, game: str, txt_path: pathlib.Path, tbz_path: pathlib.Path
-    ) -> Optional[GameHistory]:
-        """Parse one Atari-HEAD trial → GameHistory."""
-        import csv
-        import io as _io
-        import random
-        import tarfile
+    def load_trial(self, game, txt_path, frames_src) -> Optional[GameHistory]:
+        """Parse one Atari-HEAD trial → GameHistory.
+        frames_src is either a .tar.bz2 path or a directory of PNGs."""
+        import csv, random
 
-        # ── Parse CSV metadata ──────────────────────────────────────────────
         rows: list[dict] = []
         with open(txt_path, encoding="utf-8") as fh:
             reader = csv.DictReader(fh)
@@ -353,26 +373,32 @@ class AtariHeadDataset:
         if len(rows) < 2:
             return None
 
-        # ── Random subsample to cap memory ─────────────────────────────────
         if self.max_steps and len(rows) > self.max_steps:
             rows = random.sample(rows, self.max_steps)
-            rows.sort(key=lambda r: r["frame_id"])   # preserve temporal order
+            rows.sort(key=lambda r: r["frame_id"])
 
         target_ids: set[str] = {r["frame_id"] for r in rows}
 
-        # ── Stream frames from tar.bz2, keeping only targets ───────────────
+        # Load frame bytes — two strategies
         frame_bytes: dict[str, bytes] = {}
-        with tarfile.open(tbz_path, mode="r:bz2") as tf:
-            for member in tf.getmembers():
-                if not member.name.endswith(".png"):
-                    continue
-                stem = pathlib.Path(member.name).stem   # e.g. "RZ_3866968_5623"
+        if frames_src.suffix == ".bz2":
+            import tarfile
+            with tarfile.open(frames_src, mode="r:bz2") as tf:
+                for member in tf.getmembers():
+                    if not member.name.endswith(".png"):
+                        continue
+                    stem = pathlib.Path(member.name).stem
+                    if stem in target_ids:
+                        f = tf.extractfile(member)
+                        if f:
+                            frame_bytes[stem] = f.read()
+        else:
+            # Pre-extracted PNG directory (Kaggle layout)
+            for png_path in frames_src.glob("*.png"):
+                stem = png_path.stem
                 if stem in target_ids:
-                    f = tf.extractfile(member)
-                    if f:
-                        frame_bytes[stem] = f.read()
+                    frame_bytes[stem] = png_path.read_bytes()
 
-        # ── Build GameHistory ───────────────────────────────────────────────
         n_actions = ATARI_HEAD_N_ACTIONS.get(game, ATARI_DEFAULT_N_ACTIONS)
         hist = GameHistory(is_domain_anchor=False)
         step_rewards: list[float] = []
@@ -398,8 +424,8 @@ class AtariHeadDataset:
     def load_all(self, verbose: bool = True) -> list[GameHistory]:
         histories = []
         trials = list(self.iter_trials())
-        for i, (game, txt_path, tbz_path) in enumerate(trials):
-            h = self.load_trial(game, txt_path, tbz_path)
+        for i, (game, txt_path, frames_src) in enumerate(trials):
+            h = self.load_trial(game, txt_path, frames_src)
             if h is not None:
                 histories.append(h)
                 if verbose:
