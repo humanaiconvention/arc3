@@ -166,6 +166,7 @@ else:
     config1.blocks              = 3
     config1.channels            = 64
     config1.train_on_gpu        = torch.cuda.is_available()
+    config1.ratio               = None  # disable self-play ratio gate (offline training)
     config1.num_workers         = 1
     config1.results_path        = OUT_DIR / "stage1" / ts
     config1.results_path.mkdir(parents=True, exist_ok=True)
@@ -246,6 +247,7 @@ config2.lr_init             = 3e-5
 config2.lr_decay_rate       = 0.95
 config2.lr_decay_steps      = 5_000
 config2.train_on_gpu        = torch.cuda.is_available()
+config2.ratio               = None  # offline training
 config2.num_workers         = 1
 config2.results_path        = OUT_DIR / "stage2" / ts
 config2.results_path.mkdir(parents=True, exist_ok=True)
@@ -260,3 +262,20 @@ with open(stage2_path, "wb") as f:
 print(f"Stage 2 checkpoint: {stage2_path}")
 print("\nDone. Stage 3 (TTT) runs live against the ARC-AGI-3 environment.")
 print(f"Feed {stage2_path} to arc3_muzero_ttt.ipynb or the Kaggle TTT kernel.")
+
+# ─────────────────────────────────────────────────────────────────────────────
+# NOTE: Pre-extract Atari-HEAD for fast PNG reads (avoids bz2 decompression):
+#
+#   cd /data && mkdir -p atari-head-extracted
+#   for z in atari-head/*.zip; do
+#       game=$(basename "$z" .zip)
+#       unzip -o "$z" -d atari-head-extracted/
+#       for tbz in atari-head-extracted/$game/*.tar.bz2; do
+#           trial=$(basename "$tbz" .tar.bz2)
+#           mkdir -p "atari-head-extracted/$game/$trial"
+#           tar xjf "$tbz" -C "atari-head-extracted/$game/$trial/"
+#       done
+#   done
+#
+# Then pass --atari-dir /data/atari-head-extracted (PNG layout, loads in <1 min).
+# ─────────────────────────────────────────────────────────────────────────────
