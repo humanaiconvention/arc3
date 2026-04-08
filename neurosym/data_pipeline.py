@@ -261,140 +261,156 @@ ATARI_HEAD_N_ACTIONS: dict[str, int] = {
 ATARI_DEFAULT_N_ACTIONS = 18
 
 
-def _resize_frame_grayscale(frame_bytes: bytes) -> np.ndarray:
-    """
-    Decode a raw RGB frame from Atari-HEAD and resize to (1, 64, 64) float32.
-
-    Atari-HEAD stores frames as raw bytes: H×W×3 uint8 (210×160×3).
-    We convert to grayscale via BT.601 luma and resize with area averaging.
-    """
-    raw = np.frombuffer(frame_bytes, dtype=np.uint8)
-    if raw.size != _ATARI_FRAME_H * _ATARI_FRAME_W * 3:
-        # Fallback: zero frame if dimensions unexpected
+def _load_png_bytes_as_gray64(png_bytes: bytes) -> np.ndarray:
+    """Load PNG bytes → (1, 64, 64) float32 grayscale."""
+    try:
+        import PIL.Image as _Image
+        import io as _io
+        img = _Image.open(_io.BytesIO(png_bytes)).convert("L").resize((_OUT_W, _OUT_H))
+        return (np.array(img, dtype=np.float32) / 255.0)[np.newaxis]
+    except Exception:
         return np.zeros((1, _OUT_H, _OUT_W), dtype=np.float32)
-
-    rgb = raw.reshape(_ATARI_FRAME_H, _ATARI_FRAME_W, 3).astype(np.float32)
-    # BT.601 luma
-    gray = 0.299 * rgb[:, :, 0] + 0.587 * rgb[:, :, 1] + 0.114 * rgb[:, :, 2]
-    # Area average: 210→64, 160→64
-    # Simple stride-based approximation (PIL/cv2 not required)
-    h_ratio = _ATARI_FRAME_H / _OUT_H
-    w_ratio = _ATARI_FRAME_W / _OUT_W
-    out = np.zeros((_OUT_H, _OUT_W), dtype=np.float32)
-    for i in range(_OUT_H):
-        r0, r1 = int(i * h_ratio), int((i + 1) * h_ratio)
-        for j in range(_OUT_W):
-            c0, c1 = int(j * w_ratio), int((j + 1) * w_ratio)
-            out[i, j] = gray[r0:r1, c0:c1].mean()
-    return (out / 255.0)[np.newaxis]   # (1, 64, 64) float32
 
 
 class AtariHeadDataset:
     """
-    Loads Atari-HEAD trajectories from zenodo.org/records/3451402.
+    Loads Atari-HEAD trajectories from the official Zenodo release.
+    (zenodo.org/records/3451402)
 
-    Expected directory layout (post-download):
+    Actual Zenodo format — after extracting the outer game zip:
         <root_dir>/
             <game_name>/
-                <game_name>_<subject>_<trial>.tar.bz2   (or extracted dirs)
-                ...
+                <trial_id>.txt        — CSV: frame_id, unclipped_reward, action, ...
+                <trial_id>.tar.bz2   — PNG frames: <subject_id>_<frame_num>.png
 
-    Each trial contains:
-        - frame_NNNNNN.png  (or raw bytes in .bin)
-        - action_enums.txt  (one int per line)
-        - rewards.txt       (one float per line)
+    Each row in the .txt CSV = one frame.  The PNG filename stem matches the
+    frame_id column exactly (e.g. frame_id "RZ_3866968_5" → "RZ_3866968_5.png").
 
-    Atari-HEAD uses a specific per-trial archive format. This loader handles
-    the extracted form (directory of PNG + txt files).
+    The tar.bz2 is scanned sequentially; only frames in the sampled target set
+    are read into memory, keeping peak RAM low even for long trials.
 
     Parameters
     ----------
-    root_dir  : root directory of Atari-HEAD dataset
-    max_trials_per_game : cap to avoid memory issues; None = unlimited
-    discount  : discount for MC returns
+    root_dir             : directory containing extracted game subdirs
+    max_trials_per_game  : cap per game; None = unlimited
+    max_steps_per_trial  : randomly sample this many steps per trial (None = all)
+    discount             : discount factor for MC returns
     """
 
     def __init__(
         self,
         root_dir: str | pathlib.Path,
-        max_trials_per_game: Optional[int] = 5,
+        max_trials_per_game: Optional[int] = 2,
+        max_steps_per_trial: Optional[int] = 500,
         discount: float = 0.99,
     ):
         self.root_dir = pathlib.Path(root_dir)
         self.max_trials = max_trials_per_game
+        self.max_steps = max_steps_per_trial
         self.discount = discount
 
-    def iter_trial_dirs(self) -> Iterator[tuple[str, pathlib.Path]]:
-        """Yield (game_name, trial_dir) for each extracted trial."""
+    def iter_trials(self) -> Iterator[tuple[str, pathlib.Path, pathlib.Path]]:
+        """Yield (game_name, txt_path, tar_bz2_path) for each trial."""
         for game_dir in sorted(self.root_dir.iterdir()):
             if not game_dir.is_dir():
                 continue
             game = game_dir.name.lower().replace("-", "_")
-            trials = sorted(d for d in game_dir.iterdir() if d.is_dir())
-            if self.max_trials:
-                trials = trials[:self.max_trials]
-            for trial in trials:
-                yield game, trial
+            txt_files = sorted(game_dir.glob("*.txt"))
+            count = 0
+            for txt_path in txt_files:
+                tbz_path = txt_path.with_suffix(".tar.bz2")
+                if tbz_path.exists():
+                    yield game, txt_path, tbz_path
+                    count += 1
+                    if self.max_trials and count >= self.max_trials:
+                        break
 
-    def load_trial(self, game: str, trial_dir: pathlib.Path) -> Optional[GameHistory]:
-        """Parse one Atari-HEAD trial directory → GameHistory."""
-        actions_file = trial_dir / "action_enums.txt"
-        rewards_file = trial_dir / "rewards.txt"
-        frames_dir = trial_dir   # PNGs live here
+    def load_trial(
+        self, game: str, txt_path: pathlib.Path, tbz_path: pathlib.Path
+    ) -> Optional[GameHistory]:
+        """Parse one Atari-HEAD trial → GameHistory."""
+        import csv
+        import io as _io
+        import random
+        import tarfile
 
-        if not actions_file.exists() or not rewards_file.exists():
+        # ── Parse CSV metadata ──────────────────────────────────────────────
+        rows: list[dict] = []
+        with open(txt_path, encoding="utf-8") as fh:
+            reader = csv.DictReader(fh)
+            for row in reader:
+                try:
+                    action_str = (row.get("action") or "0").strip()
+                    reward_str = (row.get("unclipped_reward") or "0").strip()
+                    action = int(action_str) if action_str not in ("", "null") else 0
+                    reward = float(reward_str) if reward_str not in ("", "null") else 0.0
+                    frame_id = (row.get("frame_id") or "").strip()
+                    if frame_id:
+                        rows.append({"frame_id": frame_id, "action": action, "reward": reward})
+                except (ValueError, TypeError):
+                    continue
+
+        if len(rows) < 2:
             return None
 
-        actions = [int(l.strip()) for l in actions_file.read_text().splitlines() if l.strip()]
-        rewards = [float(l.strip()) for l in rewards_file.read_text().splitlines() if l.strip()]
+        # ── Random subsample to cap memory ─────────────────────────────────
+        if self.max_steps and len(rows) > self.max_steps:
+            rows = random.sample(rows, self.max_steps)
+            rows.sort(key=lambda r: r["frame_id"])   # preserve temporal order
 
-        frame_files = sorted(frames_dir.glob("frame_*.png"))
-        if not frame_files:
-            # Try raw .bin frames
-            frame_files = sorted(frames_dir.glob("*.bin"))
+        target_ids: set[str] = {r["frame_id"] for r in rows}
 
-        n = min(len(actions), len(rewards), len(frame_files))
-        if n < 2:
-            return None
+        # ── Stream frames from tar.bz2, keeping only targets ───────────────
+        frame_bytes: dict[str, bytes] = {}
+        with tarfile.open(tbz_path, mode="r:bz2") as tf:
+            for member in tf.getmembers():
+                if not member.name.endswith(".png"):
+                    continue
+                stem = pathlib.Path(member.name).stem   # e.g. "RZ_3866968_5623"
+                if stem in target_ids:
+                    f = tf.extractfile(member)
+                    if f:
+                        frame_bytes[stem] = f.read()
 
+        # ── Build GameHistory ───────────────────────────────────────────────
         n_actions = ATARI_HEAD_N_ACTIONS.get(game, ATARI_DEFAULT_N_ACTIONS)
         hist = GameHistory(is_domain_anchor=False)
         step_rewards: list[float] = []
 
-        for i in range(n):
-            # Load and convert frame
-            fpath = frame_files[i]
-            if fpath.suffix == ".png":
-                obs = _load_png_as_gray64(fpath)
-            else:
-                obs = _resize_frame_grayscale(fpath.read_bytes())
-
+        for row in rows:
+            fid = row["frame_id"]
+            if fid not in frame_bytes:
+                continue
+            obs = _load_png_bytes_as_gray64(frame_bytes[fid])
             hist.observation_history.append(obs)
-            hist.action_history.append(int(actions[i]))
-            hist.reward_history.append(float(rewards[i]))
+            hist.action_history.append(row["action"])
+            hist.reward_history.append(row["reward"])
             hist.to_play_history.append(0)
-            step_rewards.append(float(rewards[i]))
+            step_rewards.append(row["reward"])
 
-        hist.child_visits = uniform_policy(n_actions, n)
+        if len(hist.observation_history) < 2:
+            return None
+
+        hist.child_visits = uniform_policy(n_actions, len(hist.observation_history))
         hist.root_values = compute_mc_returns(step_rewards, self.discount)
         return hist
 
     def load_all(self, verbose: bool = True) -> list[GameHistory]:
         histories = []
-        trials = list(self.iter_trial_dirs())
-        for i, (game, trial_dir) in enumerate(trials):
-            h = self.load_trial(game, trial_dir)
+        trials = list(self.iter_trials())
+        for i, (game, txt_path, tbz_path) in enumerate(trials):
+            h = self.load_trial(game, txt_path, tbz_path)
             if h is not None:
                 histories.append(h)
-                if verbose and i % 20 == 0:
-                    print(f"  Atari [{i+1}/{len(trials)}] {game}/{trial_dir.name}: "
+                if verbose:
+                    print(f"  Atari [{i+1}/{len(trials)}] {game}/{txt_path.stem}: "
                           f"{len(h.observation_history)} steps")
         print(f"AtariHeadDataset: {len(histories)} histories loaded")
         return histories
 
 
 def _load_png_as_gray64(path: pathlib.Path) -> np.ndarray:
-    """Load PNG → (1, 64, 64) float32 grayscale without PIL dependency."""
+    """Load PNG file → (1, 64, 64) float32 grayscale."""
     try:
         import PIL.Image as _Image
         img = _Image.open(path).convert("L").resize((_OUT_W, _OUT_H))
