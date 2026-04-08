@@ -168,6 +168,12 @@ class MuZeroConfig:
         self.training_delay = 0
         self.ratio = 1.5
 
+        # ── Required by muzero-general internals ──────────────────────────────
+        self.seed = 0           # RNG seed for trainer + replay buffer
+        self.encoding_size = 64 # used by MLP network only; ignored for ResNet
+        self.stacked_observations = 0
+        self.downsample = "CNN"
+
     def visit_softmax_temperature_fn(self, trained_steps: int) -> float:
         if trained_steps < 0.5 * self.training_steps:
             return 1.0
