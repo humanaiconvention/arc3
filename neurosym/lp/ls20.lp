@@ -1,0 +1,35 @@
+% Generated from ls20.graph.json (terminal neighborhood)
+% 10 nodes; 9 real transitions (0 self-loops dropped); 4 effective labels
+numedges(9).
+node(0).
+node(1).
+node(2).
+node(3).
+node(4).
+node(5).
+node(6).
+node(7).
+node(8).
+node(9).
+labelname(1,"a1").
+labelname(2,"a2").
+labelname(3,"a3").
+labelname(4,"a4").
+edge((6,7)).
+tlabel((6,7),3).
+edge((2,3)).
+tlabel((2,3),4).
+edge((7,8)).
+tlabel((7,8),3).
+edge((5,6)).
+tlabel((5,6),1).
+edge((8,9)).
+tlabel((8,9),3).
+edge((4,5)).
+tlabel((4,5),2).
+edge((1,2)).
+tlabel((1,2),2).
+edge((3,4)).
+tlabel((3,4),3).
+edge((0,1)).
+tlabel((0,1),4).

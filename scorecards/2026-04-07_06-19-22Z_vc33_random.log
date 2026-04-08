@@ -1,0 +1,191 @@
+https://three.arcprize.org/api/games
+2026-04-06 23:19:25,134 | INFO | Game list: ['vc33-9851e02b']
+2026-04-06 23:19:25 | INFO | Successfully fetched 25 environment(s) from API
+2026-04-06 23:19:25,168 | INFO | Successfully fetched 25 environment(s) from API
+***** MAKING SCORECARD
+{"card_id":"38ab15e9-7581-416d-b3f0-53f5bb4dec99"}
+
+{'card_id': '38ab15e9-7581-416d-b3f0-53f5bb4dec99'}
+2026-04-06 23:19:25 | INFO | Created new scorecard: 38ab15e9-7581-416d-b3f0-53f5bb4dec99
+2026-04-06 23:19:25,207 | INFO | Created new scorecard: 38ab15e9-7581-416d-b3f0-53f5bb4dec99
+***** MAKING ALL AGENTS with card id: 38ab15e9-7581-416d-b3f0-53f5bb4dec99
+2026-04-06 23:19:25 | INFO | Successfully fetched metadata for game vc33
+2026-04-06 23:19:25,240 | INFO | Successfully fetched metadata for game vc33
+2026-04-06 23:19:25 | INFO | Successfully reset game vc33-9851e02b, guid=94ff20d9-f684-4a4c-b9d9-b975e4fadeec, scorecard_id=38ab15e9-7581-416d-b3f0-53f5bb4dec99
+2026-04-06 23:19:25,329 | INFO | Successfully reset game vc33-9851e02b, guid=94ff20d9-f684-4a4c-b9d9-b975e4fadeec, scorecard_id=38ab15e9-7581-416d-b3f0-53f5bb4dec99
+2026-04-06 23:19:25,329 | INFO | created new recording for vc33-9851e02b.random.80 into recordings\vc33-9851e02b.random.80.6e1917d5-49de-43a8-be5a-8863442ed7ff.recording.jsonl
+2026-04-06 23:19:25,356 | INFO | vc33-9851e02b - ACTION1: count 0, levels completed 0, avg fps 0.0)
+2026-04-06 23:19:25,391 | INFO | vc33-9851e02b - ACTION4: count 1, levels completed 0, avg fps 10.0)
+2026-04-06 23:19:25,437 | INFO | vc33-9851e02b - ACTION3: count 2, levels completed 0, avg fps 20.0)
+2026-04-06 23:19:25,476 | INFO | vc33-9851e02b - ACTION4: count 3, levels completed 0, avg fps 21.43)
+2026-04-06 23:19:25,515 | INFO | vc33-9851e02b - ACTION4: count 4, levels completed 0, avg fps 22.22)
+2026-04-06 23:19:25,544 | INFO | vc33-9851e02b - ACTION5: count 5, levels completed 0, avg fps 23.81)
+2026-04-06 23:19:25,572 | INFO | vc33-9851e02b - ACTION4: count 6, levels completed 0, avg fps 25.0)
+2026-04-06 23:19:25,634 | INFO | vc33-9851e02b - ACTION3: count 7, levels completed 0, avg fps 23.33)
+2026-04-06 23:19:25,675 | INFO | vc33-9851e02b - ACTION3: count 8, levels completed 0, avg fps 23.53)
+2026-04-06 23:19:25,711 | INFO | vc33-9851e02b - ACTION6: count 9, levels completed 0, avg fps 23.68)
+2026-04-06 23:19:25,753 | INFO | vc33-9851e02b - ACTION4: count 10, levels completed 0, avg fps 23.81)
+2026-04-06 23:19:25,793 | INFO | vc33-9851e02b - ACTION5: count 11, levels completed 0, avg fps 23.91)
+2026-04-06 23:19:25,815 | INFO | vc33-9851e02b - ACTION1: count 12, levels completed 0, avg fps 25.0)
+2026-04-06 23:19:25,849 | INFO | vc33-9851e02b - ACTION1: count 13, levels completed 0, avg fps 25.49)
+2026-04-06 23:19:25,889 | INFO | vc33-9851e02b - ACTION1: count 14, levels completed 0, avg fps 25.45)
+2026-04-06 23:19:25,915 | INFO | vc33-9851e02b - ACTION4: count 15, levels completed 0, avg fps 25.86)
+2026-04-06 23:19:25,954 | INFO | vc33-9851e02b - ACTION4: count 16, levels completed 0, avg fps 25.81)
+2026-04-06 23:19:26,000 | INFO | vc33-9851e02b - ACTION3: count 17, levels completed 0, avg fps 25.76)
+2026-04-06 23:19:26,052 | INFO | vc33-9851e02b - ACTION1: count 18, levels completed 0, avg fps 25.0)
+2026-04-06 23:19:26,093 | INFO | vc33-9851e02b - ACTION5: count 19, levels completed 0, avg fps 25.0)
+2026-04-06 23:19:26,134 | INFO | vc33-9851e02b - ACTION1: count 20, levels completed 0, avg fps 25.0)
+2026-04-06 23:19:26,162 | INFO | vc33-9851e02b - ACTION5: count 21, levels completed 0, avg fps 25.3)
+2026-04-06 23:19:26,197 | INFO | vc33-9851e02b - ACTION1: count 22, levels completed 0, avg fps 25.58)
+2026-04-06 23:19:26,225 | INFO | vc33-9851e02b - ACTION2: count 23, levels completed 0, avg fps 25.84)
+2026-04-06 23:19:26,266 | INFO | vc33-9851e02b - ACTION2: count 24, levels completed 0, avg fps 25.81)
+2026-04-06 23:19:26,294 | INFO | vc33-9851e02b - ACTION4: count 25, levels completed 0, avg fps 26.04)
+2026-04-06 23:19:26,378 | INFO | vc33-9851e02b - ACTION2: count 26, levels completed 0, avg fps 25.0)
+2026-04-06 23:19:26,413 | INFO | vc33-9851e02b - ACTION4: count 27, levels completed 0, avg fps 25.0)
+2026-04-06 23:19:26,443 | INFO | vc33-9851e02b - ACTION4: count 28, levels completed 0, avg fps 25.23)
+2026-04-06 23:19:26,481 | INFO | vc33-9851e02b - ACTION4: count 29, levels completed 0, avg fps 25.22)
+2026-04-06 23:19:26,509 | INFO | vc33-9851e02b - ACTION7: count 30, levels completed 0, avg fps 25.64)
+2026-04-06 23:19:26,545 | INFO | vc33-9851e02b - ACTION6: count 31, levels completed 0, avg fps 25.62)
+2026-04-06 23:19:26,584 | INFO | vc33-9851e02b - ACTION1: count 32, levels completed 0, avg fps 25.6)
+2026-04-06 23:19:26,607 | INFO | vc33-9851e02b - ACTION6: count 33, levels completed 0, avg fps 25.98)
+2026-04-06 23:19:26,667 | INFO | vc33-9851e02b - ACTION5: count 34, levels completed 0, avg fps 25.56)
+2026-04-06 23:19:26,692 | INFO | vc33-9851e02b - ACTION7: count 35, levels completed 0, avg fps 25.74)
+2026-04-06 23:19:26,718 | INFO | vc33-9851e02b - ACTION1: count 36, levels completed 0, avg fps 26.09)
+2026-04-06 23:19:26,745 | INFO | vc33-9851e02b - ACTION7: count 37, levels completed 0, avg fps 26.24)
+2026-04-06 23:19:26,772 | INFO | vc33-9851e02b - ACTION1: count 38, levels completed 0, avg fps 26.39)
+2026-04-06 23:19:26,794 | INFO | vc33-9851e02b - ACTION1: count 39, levels completed 0, avg fps 26.71)
+2026-04-06 23:19:26,822 | INFO | vc33-9851e02b - ACTION7: count 40, levels completed 0, avg fps 26.85)
+2026-04-06 23:19:26,849 | INFO | vc33-9851e02b - ACTION2: count 41, levels completed 0, avg fps 27.15)
+2026-04-06 23:19:26,877 | INFO | vc33-9851e02b - ACTION5: count 42, levels completed 0, avg fps 27.27)
+2026-04-06 23:19:26,902 | INFO | vc33-9851e02b - ACTION6: count 43, levels completed 0, avg fps 27.39)
+2026-04-06 23:19:26,926 | INFO | vc33-9851e02b - ACTION6: count 44, levels completed 0, avg fps 27.67)
+2026-04-06 23:19:26,954 | INFO | vc33-9851e02b - ACTION2: count 45, levels completed 0, avg fps 27.78)
+2026-04-06 23:19:26,984 | INFO | vc33-9851e02b - ACTION7: count 46, levels completed 0, avg fps 27.88)
+2026-04-06 23:19:27,009 | INFO | vc33-9851e02b - ACTION2: count 47, levels completed 0, avg fps 28.14)
+2026-04-06 23:19:27,036 | INFO | vc33-9851e02b - ACTION6: count 48, levels completed 0, avg fps 28.24)
+2026-04-06 23:19:27,064 | INFO | vc33-9851e02b - ACTION6: count 49, levels completed 0, avg fps 28.32)
+2026-04-06 23:19:27,089 | INFO | vc33-9851e02b - ACTION3: count 50, levels completed 0, avg fps 28.57)
+2026-04-06 23:19:27,113 | INFO | vc33-9851e02b - ACTION6: count 51, levels completed 0, avg fps 28.65)
+2026-04-06 23:19:27,141 | INFO | vc33-9851e02b - ACTION3: count 52, levels completed 0, avg fps 28.73)
+2026-04-06 23:19:27,168 | INFO | vc33-9851e02b - ACTION4: count 53, levels completed 0, avg fps 28.96)
+2026-04-06 23:19:27,189 | INFO | vc33-9851e02b - ACTION7: count 54, levels completed 0, avg fps 29.19)
+2026-04-06 23:19:27,219 | INFO | vc33-9851e02b - ACTION3: count 55, levels completed 0, avg fps 29.26)
+2026-04-06 23:19:27,287 | INFO | vc33-9851e02b - ACTION3: count 56, levels completed 0, avg fps 28.72)
+2026-04-06 23:19:27,314 | INFO | vc33-9851e02b - ACTION2: count 57, levels completed 0, avg fps 28.79)
+2026-04-06 23:19:27,335 | INFO | vc33-9851e02b - ACTION6: count 58, levels completed 0, avg fps 29.0)
+2026-04-06 23:19:27,363 | INFO | vc33-9851e02b - ACTION4: count 59, levels completed 0, avg fps 29.06)
+2026-04-06 23:19:27,391 | INFO | vc33-9851e02b - ACTION3: count 60, levels completed 0, avg fps 29.13)
+2026-04-06 23:19:27,412 | INFO | vc33-9851e02b - ACTION6: count 61, levels completed 0, avg fps 29.33)
+2026-04-06 23:19:27,440 | INFO | vc33-9851e02b - ACTION7: count 62, levels completed 0, avg fps 29.38)
+2026-04-06 23:19:27,465 | INFO | vc33-9851e02b - ACTION5: count 63, levels completed 0, avg fps 29.58)
+2026-04-06 23:19:27,488 | INFO | vc33-9851e02b - ACTION1: count 64, levels completed 0, avg fps 29.77)
+2026-04-06 23:19:27,515 | INFO | vc33-9851e02b - ACTION5: count 65, levels completed 0, avg fps 29.82)
+2026-04-06 23:19:27,544 | INFO | vc33-9851e02b - ACTION6: count 66, levels completed 0, avg fps 29.86)
+2026-04-06 23:19:27,567 | INFO | vc33-9851e02b - ACTION1: count 67, levels completed 0, avg fps 30.04)
+2026-04-06 23:19:27,592 | INFO | vc33-9851e02b - ACTION1: count 68, levels completed 0, avg fps 30.09)
+2026-04-06 23:19:27,617 | INFO | vc33-9851e02b - ACTION1: count 69, levels completed 0, avg fps 30.26)
+2026-04-06 23:19:27,643 | INFO | vc33-9851e02b - ACTION2: count 70, levels completed 0, avg fps 30.3)
+2026-04-06 23:19:27,668 | INFO | vc33-9851e02b - ACTION1: count 71, levels completed 0, avg fps 30.47)
+2026-04-06 23:19:27,690 | INFO | vc33-9851e02b - ACTION3: count 72, levels completed 0, avg fps 30.51)
+2026-04-06 23:19:27,718 | INFO | vc33-9851e02b - ACTION5: count 73, levels completed 0, avg fps 30.67)
+2026-04-06 23:19:27,744 | INFO | vc33-9851e02b - ACTION3: count 74, levels completed 0, avg fps 30.71)
+2026-04-06 23:19:27,766 | INFO | vc33-9851e02b - ACTION1: count 75, levels completed 0, avg fps 30.86)
+2026-04-06 23:19:27,828 | INFO | vc33-9851e02b - ACTION6: count 76, levels completed 0, avg fps 30.52)
+2026-04-06 23:19:27,853 | INFO | vc33-9851e02b - ACTION2: count 77, levels completed 0, avg fps 30.56)
+2026-04-06 23:19:27,880 | INFO | vc33-9851e02b - ACTION5: count 78, levels completed 0, avg fps 30.59)
+2026-04-06 23:19:27,905 | INFO | vc33-9851e02b - ACTION5: count 79, levels completed 0, avg fps 30.74)
+2026-04-06 23:19:27,933 | INFO | vc33-9851e02b - ACTION7: count 80, levels completed 0, avg fps 30.77)
+2026-04-06 23:19:27,933 | INFO | recording for vc33-9851e02b.random.80 is available in recordings\vc33-9851e02b.random.80.6e1917d5-49de-43a8-be5a-8863442ed7ff.recording.jsonl
+2026-04-06 23:19:27,933 | INFO | Exiting: agent reached MAX_ACTIONS of 80, took 2.6 seconds (31.15 average fps)
+2026-04-06 23:19:27 | INFO | Closed scorecard: 38ab15e9-7581-416d-b3f0-53f5bb4dec99
+2026-04-06 23:19:27,955 | INFO | Closed scorecard: 38ab15e9-7581-416d-b3f0-53f5bb4dec99
+2026-04-06 23:19:27,955 | INFO | --- FINAL SCORECARD REPORT ---
+2026-04-06 23:19:27,955 | INFO | {
+  "source_url": null,
+  "tags": [
+    "baseline",
+    "agent",
+    "random"
+  ],
+  "opaque": null,
+  "card_id": "38ab15e9-7581-416d-b3f0-53f5bb4dec99",
+  "api_key": null,
+  "score": 0.0,
+  "environments": [
+    {
+      "id": "vc33-9851e02b",
+      "runs": [
+        {
+          "id": null,
+          "guid": "94ff20d9-f684-4a4c-b9d9-b975e4fadeec",
+          "score": 0.0,
+          "levels_completed": 0,
+          "actions": 81,
+          "resets": 0,
+          "state": "NOT_FINISHED",
+          "completed": false,
+          "level_scores": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "level_actions": [
+            81,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "level_baseline_actions": [
+            6,
+            13,
+            31,
+            59,
+            92,
+            24,
+            82
+          ],
+          "number_of_levels": null,
+          "number_of_environments": 0,
+          "message": null
+        }
+      ],
+      "score": 0.0,
+      "actions": 81,
+      "levels_completed": 0,
+      "completed": false,
+      "level_count": 7,
+      "resets": 0
+    }
+  ],
+  "tags_scores": [
+    {
+      "id": "click",
+      "guid": null,
+      "score": 0.0,
+      "levels_completed": 0,
+      "actions": 81,
+      "resets": null,
+      "state": null,
+      "completed": null,
+      "level_scores": null,
+      "level_actions": null,
+      "level_baseline_actions": null,
+      "number_of_levels": 7,
+      "number_of_environments": 1,
+      "message": null
+    }
+  ],
+  "total_environments_completed": 0,
+  "total_environments": 1,
+  "total_levels_completed": 0,
+  "total_levels": 7,
+  "total_actions": 81
+}
+2026-04-06 23:19:27,955 | INFO | View your scorecard online: https://three.arcprize.org/scorecards/38ab15e9-7581-416d-b3f0-53f5bb4dec99

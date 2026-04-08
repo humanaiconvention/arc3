@@ -1,0 +1,313 @@
+{
+  "summary": {
+    "recording": "lp85-305b61c3.randomrecordactions.80.73aa00e8-9350-483a-81e0-2eddac49ced1.recording.jsonl",
+    "events_total": 162,
+    "frames": 81,
+    "actions_recorded": 81,
+    "node_count": 4,
+    "edge_count": 80,
+    "distinct_edges": 37,
+    "edges_with_action_label": 80,
+    "distinct_action_labels": [
+      "a6_x0y0",
+      "a6_x0y1",
+      "a6_x0y2",
+      "a6_x0y3",
+      "a6_x1y0",
+      "a6_x1y1",
+      "a6_x1y2",
+      "a6_x1y3",
+      "a6_x2y0",
+      "a6_x2y1",
+      "a6_x2y2",
+      "a6_x2y3",
+      "a6_x3y0",
+      "a6_x3y1",
+      "a6_x3y2",
+      "a6_x3y3"
+    ],
+    "branching_max": 15,
+    "weakly_connected_components": 1,
+    "bisimulation_blocks": 4,
+    "compression_ratio": 1.0,
+    "terminal_node_count": 0,
+    "terminal_states_seen": [],
+    "available_actions_seen": [
+      [
+        6
+      ]
+    ],
+    "illegal_edges": 0,
+    "has_legal_tags": true
+  },
+  "nodes": [
+    {
+      "id": "60ee3c326e0768672e5978b0",
+      "short": "60ee3c32",
+      "first_seen_at": 1,
+      "state": "NOT_FINISHED",
+      "available_actions": [
+        6
+      ],
+      "levels_completed": 0,
+      "block": 0
+    },
+    {
+      "id": "6e77e3c0a1f8ed23f6f0cf3d",
+      "short": "6e77e3c0",
+      "first_seen_at": 3,
+      "state": "NOT_FINISHED",
+      "available_actions": [
+        6
+      ],
+      "levels_completed": 0,
+      "block": 1
+    },
+    {
+      "id": "93e05dac46762efac16a1898",
+      "short": "93e05dac",
+      "first_seen_at": 73,
+      "state": "NOT_FINISHED",
+      "available_actions": [
+        6
+      ],
+      "levels_completed": 0,
+      "block": 2
+    },
+    {
+      "id": "ca2c26e665899235c75b5953",
+      "short": "ca2c26e6",
+      "first_seen_at": 149,
+      "state": "NOT_FINISHED",
+      "available_actions": [
+        6
+      ],
+      "levels_completed": 0,
+      "block": 3
+    }
+  ],
+  "edges": [
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x1y1",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x0y2",
+      "legal": true
+    },
+    {
+      "src": "ca2c26e6",
+      "dst": "ca2c26e6",
+      "label": "a6_x3y1",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x3y1",
+      "legal": true
+    },
+    {
+      "src": "ca2c26e6",
+      "dst": "ca2c26e6",
+      "label": "a6_x0y0",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "ca2c26e6",
+      "label": "a6_x3y1",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x0y0",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x0y1",
+      "legal": true
+    },
+    {
+      "src": "ca2c26e6",
+      "dst": "ca2c26e6",
+      "label": "a6_x2y2",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x1y1",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x3y0",
+      "legal": true
+    },
+    {
+      "src": "60ee3c32",
+      "dst": "6e77e3c0",
+      "label": "a6_x0y2",
+      "legal": true
+    },
+    {
+      "src": "ca2c26e6",
+      "dst": "ca2c26e6",
+      "label": "a6_x2y0",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x2y0",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x0y0",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x0y1",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x1y0",
+      "legal": true
+    },
+    {
+      "src": "ca2c26e6",
+      "dst": "ca2c26e6",
+      "label": "a6_x3y2",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x2y3",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x3y2",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x2y2",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x3y0",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x1y3",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x3y3",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x2y0",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x0y3",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x1y2",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "93e05dac",
+      "label": "a6_x0y2",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x2y1",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x1y0",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x2y3",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x3y2",
+      "legal": true
+    },
+    {
+      "src": "93e05dac",
+      "dst": "93e05dac",
+      "label": "a6_x0y2",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x1y3",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x3y3",
+      "legal": true
+    },
+    {
+      "src": "6e77e3c0",
+      "dst": "6e77e3c0",
+      "label": "a6_x1y2",
+      "legal": true
+    },
+    {
+      "src": "ca2c26e6",
+      "dst": "ca2c26e6",
+      "label": "a6_x1y1",
+      "legal": true
+    }
+  ]
+}

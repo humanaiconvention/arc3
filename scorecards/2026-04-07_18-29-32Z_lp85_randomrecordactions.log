@@ -1,0 +1,194 @@
+https://three.arcprize.org/api/games
+2026-04-07 11:29:35,297 | INFO | Game list: ['lp85-305b61c3']
+2026-04-07 11:29:35 | INFO | Successfully fetched 25 environment(s) from API
+2026-04-07 11:29:35,334 | INFO | Successfully fetched 25 environment(s) from API
+***** MAKING SCORECARD
+{"card_id":"c1141c42-5f06-4c11-962f-c1d8e64c7ef2"}
+
+{'card_id': 'c1141c42-5f06-4c11-962f-c1d8e64c7ef2'}
+2026-04-07 11:29:35 | INFO | Created new scorecard: c1141c42-5f06-4c11-962f-c1d8e64c7ef2
+2026-04-07 11:29:35,388 | INFO | Created new scorecard: c1141c42-5f06-4c11-962f-c1d8e64c7ef2
+***** MAKING ALL AGENTS with card id: c1141c42-5f06-4c11-962f-c1d8e64c7ef2
+2026-04-07 11:29:35 | INFO | Successfully fetched metadata for game lp85
+2026-04-07 11:29:35,422 | INFO | Successfully fetched metadata for game lp85
+2026-04-07 11:29:35 | INFO | Successfully reset game lp85-305b61c3, guid=df19baea-d360-4c91-9f85-0e2d7220543c, scorecard_id=c1141c42-5f06-4c11-962f-c1d8e64c7ef2
+2026-04-07 11:29:35,514 | INFO | Successfully reset game lp85-305b61c3, guid=df19baea-d360-4c91-9f85-0e2d7220543c, scorecard_id=c1141c42-5f06-4c11-962f-c1d8e64c7ef2
+2026-04-07 11:29:35,514 | INFO | created new recording for lp85-305b61c3.randomrecordactions.80 into recordings\lp85-305b61c3.randomrecordactions.80.04afa11b-c4f5-46e0-9ce4-f41d4f7499dd.recording.jsonl
+2026-04-07 11:29:35,540 | INFO | lp85-305b61c3 - ACTION4: count 0, levels completed 0, avg fps 0.0)
+2026-04-07 11:29:35,567 | INFO | lp85-305b61c3 - ACTION7: count 1, levels completed 0, avg fps 10.0)
+2026-04-07 11:29:35,593 | INFO | lp85-305b61c3 - ACTION4: count 2, levels completed 0, avg fps 20.0)
+2026-04-07 11:29:35,629 | INFO | lp85-305b61c3 - ACTION4: count 3, levels completed 0, avg fps 27.27)
+2026-04-07 11:29:35,665 | INFO | lp85-305b61c3 - ACTION5: count 4, levels completed 0, avg fps 28.57)
+2026-04-07 11:29:35,689 | INFO | lp85-305b61c3 - ACTION1: count 5, levels completed 0, avg fps 29.41)
+2026-04-07 11:29:35,707 | INFO | lp85-305b61c3 - ACTION5: count 6, levels completed 0, avg fps 31.58)
+2026-04-07 11:29:35,748 | INFO | lp85-305b61c3 - ACTION4: count 7, levels completed 0, avg fps 30.43)
+2026-04-07 11:29:35,771 | INFO | lp85-305b61c3 - ACTION7: count 8, levels completed 0, avg fps 32.0)
+2026-04-07 11:29:35,797 | INFO | lp85-305b61c3 - ACTION2: count 9, levels completed 0, avg fps 32.14)
+2026-04-07 11:29:35,821 | INFO | lp85-305b61c3 - ACTION4: count 10, levels completed 0, avg fps 33.33)
+2026-04-07 11:29:35,845 | INFO | lp85-305b61c3 - ACTION4: count 11, levels completed 0, avg fps 33.33)
+2026-04-07 11:29:35,885 | INFO | lp85-305b61c3 - ACTION3: count 12, levels completed 0, avg fps 33.33)
+2026-04-07 11:29:35,908 | INFO | lp85-305b61c3 - ACTION4: count 13, levels completed 0, avg fps 33.33)
+2026-04-07 11:29:35,944 | INFO | lp85-305b61c3 - ACTION1: count 14, levels completed 0, avg fps 33.33)
+2026-04-07 11:29:35,982 | INFO | lp85-305b61c3 - ACTION7: count 15, levels completed 0, avg fps 32.61)
+2026-04-07 11:29:36,019 | INFO | lp85-305b61c3 - ACTION3: count 16, levels completed 0, avg fps 32.0)
+2026-04-07 11:29:36,054 | INFO | lp85-305b61c3 - ACTION5: count 17, levels completed 0, avg fps 32.08)
+2026-04-07 11:29:36,079 | INFO | lp85-305b61c3 - ACTION2: count 18, levels completed 0, avg fps 32.14)
+2026-04-07 11:29:36,115 | INFO | lp85-305b61c3 - ACTION4: count 19, levels completed 0, avg fps 32.2)
+2026-04-07 11:29:36,140 | INFO | lp85-305b61c3 - ACTION1: count 20, levels completed 0, avg fps 32.26)
+2026-04-07 11:29:36,166 | INFO | lp85-305b61c3 - ACTION1: count 21, levels completed 0, avg fps 32.31)
+2026-04-07 11:29:36,191 | INFO | lp85-305b61c3 - ACTION4: count 22, levels completed 0, avg fps 32.84)
+2026-04-07 11:29:36,220 | INFO | lp85-305b61c3 - ACTION6: count 23, levels completed 0, avg fps 32.86)
+2026-04-07 11:29:36,246 | INFO | lp85-305b61c3 - ACTION1: count 24, levels completed 0, avg fps 32.88)
+2026-04-07 11:29:36,274 | INFO | lp85-305b61c3 - ACTION2: count 25, levels completed 0, avg fps 33.33)
+2026-04-07 11:29:36,308 | INFO | lp85-305b61c3 - ACTION4: count 26, levels completed 0, avg fps 32.91)
+2026-04-07 11:29:36,346 | INFO | lp85-305b61c3 - ACTION1: count 27, levels completed 0, avg fps 32.53)
+2026-04-07 11:29:36,384 | INFO | lp85-305b61c3 - ACTION5: count 28, levels completed 0, avg fps 32.56)
+2026-04-07 11:29:36,426 | INFO | lp85-305b61c3 - ACTION7: count 29, levels completed 0, avg fps 31.87)
+2026-04-07 11:29:36,467 | INFO | lp85-305b61c3 - ACTION5: count 30, levels completed 0, avg fps 31.58)
+2026-04-07 11:29:36,505 | INFO | lp85-305b61c3 - ACTION5: count 31, levels completed 0, avg fps 31.31)
+2026-04-07 11:29:36,529 | INFO | lp85-305b61c3 - ACTION2: count 32, levels completed 0, avg fps 31.68)
+2026-04-07 11:29:36,552 | INFO | lp85-305b61c3 - ACTION1: count 33, levels completed 0, avg fps 32.04)
+2026-04-07 11:29:36,582 | INFO | lp85-305b61c3 - ACTION6: count 34, levels completed 0, avg fps 32.08)
+2026-04-07 11:29:36,612 | INFO | lp85-305b61c3 - ACTION2: count 35, levels completed 0, avg fps 32.11)
+2026-04-07 11:29:36,636 | INFO | lp85-305b61c3 - ACTION4: count 36, levels completed 0, avg fps 32.14)
+2026-04-07 11:29:36,657 | INFO | lp85-305b61c3 - ACTION4: count 37, levels completed 0, avg fps 32.46)
+2026-04-07 11:29:36,680 | INFO | lp85-305b61c3 - ACTION1: count 38, levels completed 0, avg fps 32.76)
+2026-04-07 11:29:36,703 | INFO | lp85-305b61c3 - ACTION2: count 39, levels completed 0, avg fps 33.05)
+2026-04-07 11:29:36,720 | INFO | lp85-305b61c3 - ACTION3: count 40, levels completed 0, avg fps 33.33)
+2026-04-07 11:29:36,747 | INFO | lp85-305b61c3 - ACTION2: count 41, levels completed 0, avg fps 33.33)
+2026-04-07 11:29:36,772 | INFO | lp85-305b61c3 - ACTION4: count 42, levels completed 0, avg fps 33.6)
+2026-04-07 11:29:36,796 | INFO | lp85-305b61c3 - ACTION5: count 43, levels completed 0, avg fps 33.59)
+2026-04-07 11:29:36,812 | INFO | lp85-305b61c3 - ACTION1: count 44, levels completed 0, avg fps 34.11)
+2026-04-07 11:29:36,840 | INFO | lp85-305b61c3 - ACTION5: count 45, levels completed 0, avg fps 34.09)
+2026-04-07 11:29:36,863 | INFO | lp85-305b61c3 - ACTION2: count 46, levels completed 0, avg fps 34.33)
+2026-04-07 11:29:36,887 | INFO | lp85-305b61c3 - ACTION5: count 47, levels completed 0, avg fps 34.31)
+2026-04-07 11:29:36,908 | INFO | lp85-305b61c3 - ACTION1: count 48, levels completed 0, avg fps 34.53)
+2026-04-07 11:29:36,935 | INFO | lp85-305b61c3 - ACTION3: count 49, levels completed 0, avg fps 34.75)
+2026-04-07 11:29:36,957 | INFO | lp85-305b61c3 - ACTION2: count 50, levels completed 0, avg fps 34.72)
+2026-04-07 11:29:36,979 | INFO | lp85-305b61c3 - ACTION5: count 51, levels completed 0, avg fps 34.93)
+2026-04-07 11:29:36,998 | INFO | lp85-305b61c3 - ACTION6: count 52, levels completed 0, avg fps 35.14)
+2026-04-07 11:29:37,024 | INFO | lp85-305b61c3 - ACTION2: count 53, levels completed 0, avg fps 35.33)
+2026-04-07 11:29:37,046 | INFO | lp85-305b61c3 - ACTION2: count 54, levels completed 0, avg fps 35.29)
+2026-04-07 11:29:37,070 | INFO | lp85-305b61c3 - ACTION4: count 55, levels completed 0, avg fps 35.48)
+2026-04-07 11:29:37,092 | INFO | lp85-305b61c3 - ACTION3: count 56, levels completed 0, avg fps 35.67)
+2026-04-07 11:29:37,114 | INFO | lp85-305b61c3 - ACTION7: count 57, levels completed 0, avg fps 35.85)
+2026-04-07 11:29:37,136 | INFO | lp85-305b61c3 - ACTION2: count 58, levels completed 0, avg fps 35.8)
+2026-04-07 11:29:37,158 | INFO | lp85-305b61c3 - ACTION5: count 59, levels completed 0, avg fps 35.98)
+2026-04-07 11:29:37,179 | INFO | lp85-305b61c3 - ACTION4: count 60, levels completed 0, avg fps 36.14)
+2026-04-07 11:29:37,205 | INFO | lp85-305b61c3 - ACTION2: count 61, levels completed 0, avg fps 36.31)
+2026-04-07 11:29:37,228 | INFO | lp85-305b61c3 - ACTION2: count 62, levels completed 0, avg fps 36.26)
+2026-04-07 11:29:37,248 | INFO | lp85-305b61c3 - ACTION6: count 63, levels completed 0, avg fps 36.42)
+2026-04-07 11:29:37,278 | INFO | lp85-305b61c3 - ACTION7: count 64, levels completed 0, avg fps 36.36)
+2026-04-07 11:29:37,299 | INFO | lp85-305b61c3 - ACTION3: count 65, levels completed 0, avg fps 36.52)
+2026-04-07 11:29:37,324 | INFO | lp85-305b61c3 - ACTION6: count 66, levels completed 0, avg fps 36.67)
+2026-04-07 11:29:37,349 | INFO | lp85-305b61c3 - ACTION1: count 67, levels completed 0, avg fps 36.61)
+2026-04-07 11:29:37,373 | INFO | lp85-305b61c3 - ACTION7: count 68, levels completed 0, avg fps 36.76)
+2026-04-07 11:29:37,384 | INFO | lp85-305b61c3 - ACTION7: count 69, levels completed 0, avg fps 37.1)
+2026-04-07 11:29:37,415 | INFO | lp85-305b61c3 - ACTION4: count 70, levels completed 0, avg fps 37.04)
+2026-04-07 11:29:37,442 | INFO | lp85-305b61c3 - ACTION7: count 71, levels completed 0, avg fps 36.98)
+2026-04-07 11:29:37,467 | INFO | lp85-305b61c3 - ACTION7: count 72, levels completed 0, avg fps 36.92)
+2026-04-07 11:29:37,492 | INFO | lp85-305b61c3 - ACTION1: count 73, levels completed 0, avg fps 37.06)
+2026-04-07 11:29:37,518 | INFO | lp85-305b61c3 - ACTION3: count 74, levels completed 0, avg fps 37.0)
+2026-04-07 11:29:37,535 | INFO | lp85-305b61c3 - ACTION7: count 75, levels completed 0, avg fps 37.31)
+2026-04-07 11:29:37,562 | INFO | lp85-305b61c3 - ACTION1: count 76, levels completed 0, avg fps 37.25)
+2026-04-07 11:29:37,578 | INFO | lp85-305b61c3 - ACTION1: count 77, levels completed 0, avg fps 37.38)
+2026-04-07 11:29:37,613 | INFO | lp85-305b61c3 - ACTION6: count 78, levels completed 0, avg fps 37.32)
+2026-04-07 11:29:37,636 | INFO | lp85-305b61c3 - ACTION3: count 79, levels completed 0, avg fps 37.26)
+2026-04-07 11:29:37,658 | INFO | lp85-305b61c3 - ACTION2: count 80, levels completed 0, avg fps 37.38)
+2026-04-07 11:29:37,658 | INFO | recording for lp85-305b61c3.randomrecordactions.80 is available in recordings\lp85-305b61c3.randomrecordactions.80.04afa11b-c4f5-46e0-9ce4-f41d4f7499dd.recording.jsonl
+2026-04-07 11:29:37,658 | INFO | Exiting: agent reached MAX_ACTIONS of 80, took 2.14 seconds (37.85 average fps)
+2026-04-07 11:29:37 | INFO | Closed scorecard: c1141c42-5f06-4c11-962f-c1d8e64c7ef2
+2026-04-07 11:29:37,672 | INFO | Closed scorecard: c1141c42-5f06-4c11-962f-c1d8e64c7ef2
+2026-04-07 11:29:37,672 | INFO | --- FINAL SCORECARD REPORT ---
+2026-04-07 11:29:37,672 | INFO | {
+  "source_url": null,
+  "tags": [
+    "arc3-neurosym-phase-b",
+    "agent",
+    "randomrecordactions"
+  ],
+  "opaque": null,
+  "card_id": "c1141c42-5f06-4c11-962f-c1d8e64c7ef2",
+  "api_key": null,
+  "score": 0.0,
+  "environments": [
+    {
+      "id": "lp85-305b61c3",
+      "runs": [
+        {
+          "id": null,
+          "guid": "4eae25e9-041d-449f-ac1f-5a84a91223d1",
+          "score": 0.0,
+          "levels_completed": 0,
+          "actions": 81,
+          "resets": 0,
+          "state": "NOT_FINISHED",
+          "completed": false,
+          "level_scores": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "level_actions": [
+            81,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "level_baseline_actions": [
+            33,
+            22,
+            31,
+            23,
+            33,
+            34,
+            73,
+            173
+          ],
+          "number_of_levels": null,
+          "number_of_environments": 0,
+          "message": null
+        }
+      ],
+      "score": 0.0,
+      "actions": 81,
+      "levels_completed": 0,
+      "completed": false,
+      "level_count": 8,
+      "resets": 0
+    }
+  ],
+  "tags_scores": [
+    {
+      "id": "click",
+      "guid": null,
+      "score": 0.0,
+      "levels_completed": 0,
+      "actions": 81,
+      "resets": null,
+      "state": null,
+      "completed": null,
+      "level_scores": null,
+      "level_actions": null,
+      "level_baseline_actions": null,
+      "number_of_levels": 8,
+      "number_of_environments": 1,
+      "message": null
+    }
+  ],
+  "total_environments_completed": 0,
+  "total_environments": 1,
+  "total_levels_completed": 0,
+  "total_levels": 8,
+  "total_actions": 81
+}
+2026-04-07 11:29:37,678 | INFO | View your scorecard online: https://three.arcprize.org/scorecards/c1141c42-5f06-4c11-962f-c1d8e64c7ef2

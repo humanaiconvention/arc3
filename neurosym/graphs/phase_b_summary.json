@@ -1,0 +1,160 @@
+[
+  {
+    "recording": "ft09-0d8bbf25.randomrecordactions.80.85a53761-4a3a-41c8-aa80-e5feed363897.recording.jsonl",
+    "events_total": 162,
+    "frames": 81,
+    "actions_recorded": 81,
+    "node_count": 9,
+    "edge_count": 80,
+    "distinct_edges": 52,
+    "edges_with_action_label": 80,
+    "distinct_action_labels": [
+      "a6_x0y0",
+      "a6_x0y1",
+      "a6_x0y2",
+      "a6_x0y3",
+      "a6_x1y0",
+      "a6_x1y1",
+      "a6_x1y2",
+      "a6_x1y3",
+      "a6_x2y0",
+      "a6_x2y1",
+      "a6_x2y2",
+      "a6_x2y3",
+      "a6_x3y0",
+      "a6_x3y1",
+      "a6_x3y2",
+      "a6_x3y3"
+    ],
+    "branching_max": 14,
+    "weakly_connected_components": 1,
+    "bisimulation_blocks": 9,
+    "compression_ratio": 1.0,
+    "terminal_node_count": 0,
+    "terminal_states_seen": [],
+    "available_actions_seen": [
+      [
+        6
+      ]
+    ],
+    "illegal_edges": 0,
+    "has_legal_tags": true
+  },
+  {
+    "recording": "lp85-305b61c3.randomrecordactions.80.73aa00e8-9350-483a-81e0-2eddac49ced1.recording.jsonl",
+    "events_total": 162,
+    "frames": 81,
+    "actions_recorded": 81,
+    "node_count": 4,
+    "edge_count": 80,
+    "distinct_edges": 37,
+    "edges_with_action_label": 80,
+    "distinct_action_labels": [
+      "a6_x0y0",
+      "a6_x0y1",
+      "a6_x0y2",
+      "a6_x0y3",
+      "a6_x1y0",
+      "a6_x1y1",
+      "a6_x1y2",
+      "a6_x1y3",
+      "a6_x2y0",
+      "a6_x2y1",
+      "a6_x2y2",
+      "a6_x2y3",
+      "a6_x3y0",
+      "a6_x3y1",
+      "a6_x3y2",
+      "a6_x3y3"
+    ],
+    "branching_max": 15,
+    "weakly_connected_components": 1,
+    "bisimulation_blocks": 4,
+    "compression_ratio": 1.0,
+    "terminal_node_count": 0,
+    "terminal_states_seen": [],
+    "available_actions_seen": [
+      [
+        6
+      ]
+    ],
+    "illegal_edges": 0,
+    "has_legal_tags": true
+  },
+  {
+    "recording": "ls20-9607627b.randomrecordactions.80.0da7cd91-03f6-4de1-9bef-eb0a532c96e1.recording.jsonl",
+    "events_total": 162,
+    "frames": 81,
+    "actions_recorded": 81,
+    "node_count": 81,
+    "edge_count": 80,
+    "distinct_edges": 80,
+    "edges_with_action_label": 80,
+    "distinct_action_labels": [
+      "a1",
+      "a2",
+      "a3",
+      "a4"
+    ],
+    "branching_max": 1,
+    "weakly_connected_components": 1,
+    "bisimulation_blocks": 81,
+    "compression_ratio": 1.0,
+    "terminal_node_count": 0,
+    "terminal_states_seen": [],
+    "available_actions_seen": [
+      [
+        1,
+        2,
+        3,
+        4
+      ]
+    ],
+    "illegal_edges": 0,
+    "has_legal_tags": true
+  },
+  {
+    "recording": "vc33-9851e02b.randomrecordactions.80.f34c9873-9853-4e64-a689-63b7908c99b3.recording.jsonl",
+    "events_total": 162,
+    "frames": 81,
+    "actions_recorded": 81,
+    "node_count": 51,
+    "edge_count": 80,
+    "distinct_edges": 78,
+    "edges_with_action_label": 80,
+    "distinct_action_labels": [
+      "a0",
+      "a6_x0y0",
+      "a6_x0y1",
+      "a6_x0y2",
+      "a6_x0y3",
+      "a6_x1y0",
+      "a6_x1y1",
+      "a6_x1y2",
+      "a6_x1y3",
+      "a6_x2y0",
+      "a6_x2y1",
+      "a6_x2y2",
+      "a6_x2y3",
+      "a6_x3y0",
+      "a6_x3y1",
+      "a6_x3y2",
+      "a6_x3y3"
+    ],
+    "branching_max": 2,
+    "weakly_connected_components": 1,
+    "bisimulation_blocks": 51,
+    "compression_ratio": 1.0,
+    "terminal_node_count": 1,
+    "terminal_states_seen": [
+      "GAME_OVER"
+    ],
+    "available_actions_seen": [
+      [
+        6
+      ]
+    ],
+    "illegal_edges": 1,
+    "has_legal_tags": true
+  }
+]

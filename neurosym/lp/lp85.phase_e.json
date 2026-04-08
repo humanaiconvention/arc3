@@ -1,0 +1,45 @@
+{
+  "game": "lp85",
+  "phase_e": {
+    "num_states": 4,
+    "terminal_states": [],
+    "start_state": 0,
+    "total_fluent_keys": 8,
+    "goal": {
+      "goal_conjunction": [],
+      "conjunction_size": 0,
+      "discriminating": false,
+      "false_positive_states": [],
+      "satisfying_states": [],
+      "terminal_states": [],
+      "note": "no terminal states in subgraph"
+    },
+    "initial_state": {
+      "start_state_int": 0,
+      "true_fluents": [
+        "(1,(1,1))",
+        "(1,(2,2))",
+        "(2,(1,1))",
+        "(3,(1,1))"
+      ],
+      "static_true": [
+        "(4,(1,1))",
+        "(4,(1,2))",
+        "(4,(2,1))",
+        "(5,(1,1))",
+        "(5,(1,2))",
+        "(5,(2,1))"
+      ]
+    },
+    "label_remap": {
+      "a6_x0y2": 1,
+      "a6_x3y1": 2
+    },
+    "node_remap": {
+      "60ee3c32": 0,
+      "6e77e3c0": 1,
+      "93e05dac": 2,
+      "ca2c26e6": 3
+    }
+  }
+}

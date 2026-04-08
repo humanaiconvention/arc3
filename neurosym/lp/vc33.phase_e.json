@@ -1,0 +1,71 @@
+{
+  "game": "vc33",
+  "phase_e": {
+    "num_states": 20,
+    "terminal_states": [
+      19
+    ],
+    "start_state": 0,
+    "total_fluent_keys": 12,
+    "goal": {
+      "goal_conjunction": [
+        "(1,(1,1))",
+        "(1,(2,2))"
+      ],
+      "conjunction_size": 2,
+      "discriminating": true,
+      "false_positive_states": [],
+      "satisfying_states": [
+        19
+      ],
+      "terminal_states": [
+        19
+      ]
+    },
+    "initial_state": {
+      "start_state_int": 0,
+      "true_fluents": [],
+      "static_true": [
+        "(4,(1,2))",
+        "(4,(2,1))",
+        "(4,(2,2))",
+        "(5,(1,1))"
+      ]
+    },
+    "label_remap": {
+      "a6_x0y0": 1,
+      "a6_x0y1": 2,
+      "a6_x0y2": 3,
+      "a6_x1y2": 4,
+      "a6_x1y3": 5,
+      "a6_x2y0": 6,
+      "a6_x2y1": 7,
+      "a6_x2y2": 8,
+      "a6_x2y3": 9,
+      "a6_x3y2": 10,
+      "a6_x3y3": 11
+    },
+    "node_remap": {
+      "e0573081": 0,
+      "750d9d83": 1,
+      "8913cec2": 2,
+      "d83db9dc": 3,
+      "f06bfd56": 4,
+      "600a5da7": 5,
+      "ebed0190": 6,
+      "7831bd20": 7,
+      "0381b4ce": 8,
+      "15f088b9": 9,
+      "12d12e0d": 10,
+      "4913384e": 11,
+      "6d2dcc95": 12,
+      "356d1aa7": 13,
+      "f3391f84": 14,
+      "e17e024b": 15,
+      "861c30d1": 16,
+      "c9876b84": 17,
+      "f92b3d66": 18,
+      "dfee8d2b": 19
+    }
+  }
+}

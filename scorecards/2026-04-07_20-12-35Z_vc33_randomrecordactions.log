@@ -1,0 +1,191 @@
+https://three.arcprize.org/api/games
+2026-04-07 13:12:38,477 | INFO | Game list: ['vc33-9851e02b']
+2026-04-07 13:12:38 | INFO | Successfully fetched 25 environment(s) from API
+2026-04-07 13:12:38,514 | INFO | Successfully fetched 25 environment(s) from API
+***** MAKING SCORECARD
+{"card_id":"2ecfdbaf-4a11-4069-9706-9bae1313057d"}
+
+{'card_id': '2ecfdbaf-4a11-4069-9706-9bae1313057d'}
+2026-04-07 13:12:38 | INFO | Created new scorecard: 2ecfdbaf-4a11-4069-9706-9bae1313057d
+2026-04-07 13:12:38,550 | INFO | Created new scorecard: 2ecfdbaf-4a11-4069-9706-9bae1313057d
+***** MAKING ALL AGENTS with card id: 2ecfdbaf-4a11-4069-9706-9bae1313057d
+2026-04-07 13:12:38 | INFO | Successfully fetched metadata for game vc33
+2026-04-07 13:12:38,583 | INFO | Successfully fetched metadata for game vc33
+2026-04-07 13:12:38 | INFO | Successfully reset game vc33-9851e02b, guid=94046e73-765d-4696-b237-1898ecff0842, scorecard_id=2ecfdbaf-4a11-4069-9706-9bae1313057d
+2026-04-07 13:12:38,653 | INFO | Successfully reset game vc33-9851e02b, guid=94046e73-765d-4696-b237-1898ecff0842, scorecard_id=2ecfdbaf-4a11-4069-9706-9bae1313057d
+2026-04-07 13:12:38,653 | INFO | created new recording for vc33-9851e02b.randomrecordactions.80 into recordings\vc33-9851e02b.randomrecordactions.80.f34c9873-9853-4e64-a689-63b7908c99b3.recording.jsonl
+2026-04-07 13:12:38,685 | INFO | vc33-9851e02b - ACTION6: count 0, levels completed 0, avg fps 0.0)
+2026-04-07 13:12:38,709 | INFO | vc33-9851e02b - ACTION6: count 1, levels completed 0, avg fps 10.0)
+2026-04-07 13:12:38,734 | INFO | vc33-9851e02b - ACTION6: count 2, levels completed 0, avg fps 20.0)
+2026-04-07 13:12:38,757 | INFO | vc33-9851e02b - ACTION6: count 3, levels completed 0, avg fps 30.0)
+2026-04-07 13:12:38,786 | INFO | vc33-9851e02b - ACTION6: count 4, levels completed 0, avg fps 30.77)
+2026-04-07 13:12:38,813 | INFO | vc33-9851e02b - ACTION6: count 5, levels completed 0, avg fps 33.33)
+2026-04-07 13:12:38,839 | INFO | vc33-9851e02b - ACTION6: count 6, levels completed 0, avg fps 33.33)
+2026-04-07 13:12:38,875 | INFO | vc33-9851e02b - ACTION6: count 7, levels completed 0, avg fps 31.82)
+2026-04-07 13:12:38,917 | INFO | vc33-9851e02b - ACTION6: count 8, levels completed 0, avg fps 30.77)
+2026-04-07 13:12:38,959 | INFO | vc33-9851e02b - ACTION6: count 9, levels completed 0, avg fps 30.0)
+2026-04-07 13:12:38,992 | INFO | vc33-9851e02b - ACTION6: count 10, levels completed 0, avg fps 30.3)
+2026-04-07 13:12:39,028 | INFO | vc33-9851e02b - ACTION6: count 11, levels completed 0, avg fps 29.73)
+2026-04-07 13:12:39,068 | INFO | vc33-9851e02b - ACTION6: count 12, levels completed 0, avg fps 29.27)
+2026-04-07 13:12:39,094 | INFO | vc33-9851e02b - ACTION6: count 13, levels completed 0, avg fps 29.55)
+2026-04-07 13:12:39,133 | INFO | vc33-9851e02b - ACTION6: count 14, levels completed 0, avg fps 29.79)
+2026-04-07 13:12:39,170 | INFO | vc33-9851e02b - ACTION6: count 15, levels completed 0, avg fps 29.41)
+2026-04-07 13:12:39,209 | INFO | vc33-9851e02b - ACTION6: count 16, levels completed 0, avg fps 29.09)
+2026-04-07 13:12:39,236 | INFO | vc33-9851e02b - ACTION6: count 17, levels completed 0, avg fps 29.31)
+2026-04-07 13:12:39,263 | INFO | vc33-9851e02b - ACTION6: count 18, levels completed 0, avg fps 29.51)
+2026-04-07 13:12:39,299 | INFO | vc33-9851e02b - ACTION6: count 19, levels completed 0, avg fps 29.69)
+2026-04-07 13:12:39,341 | INFO | vc33-9851e02b - ACTION6: count 20, levels completed 0, avg fps 29.41)
+2026-04-07 13:12:39,369 | INFO | vc33-9851e02b - ACTION6: count 21, levels completed 0, avg fps 29.58)
+2026-04-07 13:12:39,403 | INFO | vc33-9851e02b - ACTION6: count 22, levels completed 0, avg fps 29.73)
+2026-04-07 13:12:39,441 | INFO | vc33-9851e02b - ACTION6: count 23, levels completed 0, avg fps 29.49)
+2026-04-07 13:12:39,473 | INFO | vc33-9851e02b - ACTION6: count 24, levels completed 0, avg fps 29.63)
+2026-04-07 13:12:39,505 | INFO | vc33-9851e02b - ACTION6: count 25, levels completed 0, avg fps 29.41)
+2026-04-07 13:12:39,543 | INFO | vc33-9851e02b - ACTION6: count 26, levels completed 0, avg fps 29.55)
+2026-04-07 13:12:39,584 | INFO | vc33-9851e02b - ACTION6: count 27, levels completed 0, avg fps 29.03)
+2026-04-07 13:12:39,609 | INFO | vc33-9851e02b - ACTION6: count 28, levels completed 0, avg fps 29.47)
+2026-04-07 13:12:39,637 | INFO | vc33-9851e02b - ACTION6: count 29, levels completed 0, avg fps 29.59)
+2026-04-07 13:12:39,678 | INFO | vc33-9851e02b - ACTION6: count 30, levels completed 0, avg fps 29.41)
+2026-04-07 13:12:39,716 | INFO | vc33-9851e02b - ACTION6: count 31, levels completed 0, avg fps 29.25)
+2026-04-07 13:12:39,742 | INFO | vc33-9851e02b - ACTION6: count 32, levels completed 0, avg fps 29.63)
+2026-04-07 13:12:39,778 | INFO | vc33-9851e02b - ACTION6: count 33, levels completed 0, avg fps 29.46)
+2026-04-07 13:12:39,819 | INFO | vc33-9851e02b - ACTION6: count 34, levels completed 0, avg fps 29.31)
+2026-04-07 13:12:39,846 | INFO | vc33-9851e02b - ACTION6: count 35, levels completed 0, avg fps 29.41)
+2026-04-07 13:12:39,869 | INFO | vc33-9851e02b - ACTION6: count 36, levels completed 0, avg fps 29.75)
+2026-04-07 13:12:39,896 | INFO | vc33-9851e02b - ACTION6: count 37, levels completed 0, avg fps 29.84)
+2026-04-07 13:12:39,919 | INFO | vc33-9851e02b - ACTION6: count 38, levels completed 0, avg fps 30.16)
+2026-04-07 13:12:39,946 | INFO | vc33-9851e02b - ACTION6: count 39, levels completed 0, avg fps 30.23)
+2026-04-07 13:12:39,970 | INFO | vc33-9851e02b - ACTION6: count 40, levels completed 0, avg fps 30.53)
+2026-04-07 13:12:39,995 | INFO | vc33-9851e02b - ACTION6: count 41, levels completed 0, avg fps 30.6)
+2026-04-07 13:12:40,021 | INFO | vc33-9851e02b - ACTION6: count 42, levels completed 0, avg fps 30.88)
+2026-04-07 13:12:40,040 | INFO | vc33-9851e02b - ACTION6: count 43, levels completed 0, avg fps 31.16)
+2026-04-07 13:12:40,068 | INFO | vc33-9851e02b - ACTION6: count 44, levels completed 0, avg fps 31.21)
+2026-04-07 13:12:40,097 | INFO | vc33-9851e02b - ACTION6: count 45, levels completed 0, avg fps 31.25)
+2026-04-07 13:12:40,122 | INFO | vc33-9851e02b - ACTION6: count 46, levels completed 0, avg fps 31.51)
+2026-04-07 13:12:40,145 | INFO | vc33-9851e02b - ACTION6: count 47, levels completed 0, avg fps 31.54)
+2026-04-07 13:12:40,170 | INFO | vc33-9851e02b - ACTION6: count 48, levels completed 0, avg fps 31.79)
+2026-04-07 13:12:40,193 | INFO | vc33-9851e02b - ACTION6: count 49, levels completed 0, avg fps 31.82)
+2026-04-07 13:12:40,220 | INFO | vc33-9851e02b - RESET: count 50, levels completed 0, avg fps 32.05)
+2026-04-07 13:12:40,242 | INFO | vc33-9851e02b - ACTION6: count 51, levels completed 0, avg fps 32.28)
+2026-04-07 13:12:40,269 | INFO | vc33-9851e02b - ACTION6: count 52, levels completed 0, avg fps 32.3)
+2026-04-07 13:12:40,295 | INFO | vc33-9851e02b - ACTION6: count 53, levels completed 0, avg fps 32.32)
+2026-04-07 13:12:40,320 | INFO | vc33-9851e02b - ACTION6: count 54, levels completed 0, avg fps 32.53)
+2026-04-07 13:12:40,347 | INFO | vc33-9851e02b - ACTION6: count 55, levels completed 0, avg fps 32.54)
+2026-04-07 13:12:40,368 | INFO | vc33-9851e02b - ACTION6: count 56, levels completed 0, avg fps 32.75)
+2026-04-07 13:12:40,395 | INFO | vc33-9851e02b - ACTION6: count 57, levels completed 0, avg fps 32.76)
+2026-04-07 13:12:40,422 | INFO | vc33-9851e02b - ACTION6: count 58, levels completed 0, avg fps 32.95)
+2026-04-07 13:12:40,449 | INFO | vc33-9851e02b - ACTION6: count 59, levels completed 0, avg fps 32.96)
+2026-04-07 13:12:40,473 | INFO | vc33-9851e02b - ACTION6: count 60, levels completed 0, avg fps 33.15)
+2026-04-07 13:12:40,500 | INFO | vc33-9851e02b - ACTION6: count 61, levels completed 0, avg fps 33.15)
+2026-04-07 13:12:40,526 | INFO | vc33-9851e02b - ACTION6: count 62, levels completed 0, avg fps 33.16)
+2026-04-07 13:12:40,548 | INFO | vc33-9851e02b - ACTION6: count 63, levels completed 0, avg fps 33.33)
+2026-04-07 13:12:40,576 | INFO | vc33-9851e02b - ACTION6: count 64, levels completed 0, avg fps 33.33)
+2026-04-07 13:12:40,604 | INFO | vc33-9851e02b - ACTION6: count 65, levels completed 0, avg fps 33.33)
+2026-04-07 13:12:40,629 | INFO | vc33-9851e02b - ACTION6: count 66, levels completed 0, avg fps 33.5)
+2026-04-07 13:12:40,657 | INFO | vc33-9851e02b - ACTION6: count 67, levels completed 0, avg fps 33.5)
+2026-04-07 13:12:40,680 | INFO | vc33-9851e02b - ACTION6: count 68, levels completed 0, avg fps 33.66)
+2026-04-07 13:12:40,705 | INFO | vc33-9851e02b - ACTION6: count 69, levels completed 0, avg fps 33.66)
+2026-04-07 13:12:40,731 | INFO | vc33-9851e02b - ACTION6: count 70, levels completed 0, avg fps 33.82)
+2026-04-07 13:12:40,757 | INFO | vc33-9851e02b - ACTION6: count 71, levels completed 0, avg fps 33.81)
+2026-04-07 13:12:40,779 | INFO | vc33-9851e02b - ACTION6: count 72, levels completed 0, avg fps 33.96)
+2026-04-07 13:12:40,806 | INFO | vc33-9851e02b - ACTION6: count 73, levels completed 0, avg fps 33.95)
+2026-04-07 13:12:40,834 | INFO | vc33-9851e02b - ACTION6: count 74, levels completed 0, avg fps 33.94)
+2026-04-07 13:12:40,861 | INFO | vc33-9851e02b - ACTION6: count 75, levels completed 0, avg fps 34.09)
+2026-04-07 13:12:40,882 | INFO | vc33-9851e02b - ACTION6: count 76, levels completed 0, avg fps 34.23)
+2026-04-07 13:12:40,910 | INFO | vc33-9851e02b - ACTION6: count 77, levels completed 0, avg fps 34.22)
+2026-04-07 13:12:40,931 | INFO | vc33-9851e02b - ACTION6: count 78, levels completed 0, avg fps 34.36)
+2026-04-07 13:12:40,959 | INFO | vc33-9851e02b - ACTION6: count 79, levels completed 0, avg fps 34.35)
+2026-04-07 13:12:40,987 | INFO | vc33-9851e02b - ACTION6: count 80, levels completed 0, avg fps 34.33)
+2026-04-07 13:12:40,987 | INFO | recording for vc33-9851e02b.randomrecordactions.80 is available in recordings\vc33-9851e02b.randomrecordactions.80.f34c9873-9853-4e64-a689-63b7908c99b3.recording.jsonl
+2026-04-07 13:12:40,987 | INFO | Exiting: agent reached MAX_ACTIONS of 80, took 2.33 seconds (34.76 average fps)
+2026-04-07 13:12:41 | INFO | Closed scorecard: 2ecfdbaf-4a11-4069-9706-9bae1313057d
+2026-04-07 13:12:41,014 | INFO | Closed scorecard: 2ecfdbaf-4a11-4069-9706-9bae1313057d
+2026-04-07 13:12:41,014 | INFO | --- FINAL SCORECARD REPORT ---
+2026-04-07 13:12:41,014 | INFO | {
+  "source_url": null,
+  "tags": [
+    "legality_fixed",
+    "agent",
+    "randomrecordactions"
+  ],
+  "opaque": null,
+  "card_id": "2ecfdbaf-4a11-4069-9706-9bae1313057d",
+  "api_key": null,
+  "score": 0.0,
+  "environments": [
+    {
+      "id": "vc33-9851e02b",
+      "runs": [
+        {
+          "id": null,
+          "guid": "d124cbcf-7326-4205-81f1-899ab34f2843",
+          "score": 0.0,
+          "levels_completed": 0,
+          "actions": 81,
+          "resets": 1,
+          "state": "GAME_OVER",
+          "completed": false,
+          "level_scores": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "level_actions": [
+            81,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "level_baseline_actions": [
+            6,
+            13,
+            31,
+            59,
+            92,
+            24,
+            82
+          ],
+          "number_of_levels": null,
+          "number_of_environments": 0,
+          "message": null
+        }
+      ],
+      "score": 0.0,
+      "actions": 81,
+      "levels_completed": 0,
+      "completed": false,
+      "level_count": 7,
+      "resets": 1
+    }
+  ],
+  "tags_scores": [
+    {
+      "id": "click",
+      "guid": null,
+      "score": 0.0,
+      "levels_completed": 0,
+      "actions": 81,
+      "resets": null,
+      "state": null,
+      "completed": null,
+      "level_scores": null,
+      "level_actions": null,
+      "level_baseline_actions": null,
+      "number_of_levels": 7,
+      "number_of_environments": 1,
+      "message": null
+    }
+  ],
+  "total_environments_completed": 0,
+  "total_environments": 1,
+  "total_levels_completed": 0,
+  "total_levels": 7,
+  "total_actions": 81
+}
+2026-04-07 13:12:41,014 | INFO | View your scorecard online: https://three.arcprize.org/scorecards/2ecfdbaf-4a11-4069-9706-9bae1313057d

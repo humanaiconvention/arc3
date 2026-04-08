@@ -1,0 +1,423 @@
+{
+  "game": "vc33",
+  "pddl": {
+    "domain_path": "D:\\arc3\\neurosym\\lp\\vc33_domain.pddl",
+    "problem_path": "D:\\arc3\\neurosym\\lp\\vc33_problem.pddl",
+    "num_actions": 11,
+    "num_valid_prec": 27,
+    "num_valid_eff": 46
+  },
+  "pyperplan": {
+    "available": true,
+    "plan": [
+      "(a6_x0y0 obj1 obj1)",
+      "(a6_x2y0 obj1 obj1)",
+      "(a6_x3y3 obj1 obj1)",
+      "(a6_x0y2 obj2 obj1)",
+      "(a6_x2y0 obj1 obj1)",
+      "(a6_x3y3 obj2 obj1)"
+    ],
+    "length": 6
+  },
+  "graph_bfs": {
+    "found": true,
+    "length": 49,
+    "terminal_short": "dfee8d2b",
+    "terminal_state": "GAME_OVER",
+    "steps": [
+      {
+        "step": 1,
+        "from_short": "e0573081",
+        "to_short": "9ca940e8",
+        "label": "a6_x3y0",
+        "action_int": null,
+        "in_subgraph": false
+      },
+      {
+        "step": 2,
+        "from_short": "9ca940e8",
+        "to_short": "3b15335c",
+        "label": "a6_x0y2",
+        "action_int": 3,
+        "in_subgraph": false
+      },
+      {
+        "step": 3,
+        "from_short": "3b15335c",
+        "to_short": "e5ae36e8",
+        "label": "a6_x2y0",
+        "action_int": 6,
+        "in_subgraph": false
+      },
+      {
+        "step": 4,
+        "from_short": "e5ae36e8",
+        "to_short": "4d89f731",
+        "label": "a6_x3y3",
+        "action_int": 11,
+        "in_subgraph": false
+      },
+      {
+        "step": 5,
+        "from_short": "4d89f731",
+        "to_short": "6d960087",
+        "label": "a6_x2y3",
+        "action_int": 9,
+        "in_subgraph": false
+      },
+      {
+        "step": 6,
+        "from_short": "6d960087",
+        "to_short": "156c7836",
+        "label": "a6_x1y3",
+        "action_int": 5,
+        "in_subgraph": false
+      },
+      {
+        "step": 7,
+        "from_short": "156c7836",
+        "to_short": "92539702",
+        "label": "a6_x1y0",
+        "action_int": null,
+        "in_subgraph": false
+      },
+      {
+        "step": 8,
+        "from_short": "92539702",
+        "to_short": "0e71860a",
+        "label": "a6_x1y0",
+        "action_int": null,
+        "in_subgraph": false
+      },
+      {
+        "step": 9,
+        "from_short": "0e71860a",
+        "to_short": "42c8e80e",
+        "label": "a6_x0y2",
+        "action_int": 3,
+        "in_subgraph": false
+      },
+      {
+        "step": 10,
+        "from_short": "42c8e80e",
+        "to_short": "8f36c28b",
+        "label": "a6_x3y0",
+        "action_int": null,
+        "in_subgraph": false
+      },
+      {
+        "step": 11,
+        "from_short": "8f36c28b",
+        "to_short": "0684ea17",
+        "label": "a6_x1y1",
+        "action_int": null,
+        "in_subgraph": false
+      },
+      {
+        "step": 12,
+        "from_short": "0684ea17",
+        "to_short": "35f1a955",
+        "label": "a6_x3y0",
+        "action_int": null,
+        "in_subgraph": false
+      },
+      {
+        "step": 13,
+        "from_short": "35f1a955",
+        "to_short": "a59e52b8",
+        "label": "a6_x3y1",
+        "action_int": null,
+        "in_subgraph": false
+      },
+      {
+        "step": 14,
+        "from_short": "a59e52b8",
+        "to_short": "f4d44bd8",
+        "label": "a6_x1y0",
+        "action_int": null,
+        "in_subgraph": false
+      },
+      {
+        "step": 15,
+        "from_short": "f4d44bd8",
+        "to_short": "84fc039a",
+        "label": "a6_x2y1",
+        "action_int": 7,
+        "in_subgraph": false
+      },
+      {
+        "step": 16,
+        "from_short": "84fc039a",
+        "to_short": "17bdfdc1",
+        "label": "a6_x3y3",
+        "action_int": 11,
+        "in_subgraph": false
+      },
+      {
+        "step": 17,
+        "from_short": "17bdfdc1",
+        "to_short": "e426bb2f",
+        "label": "a6_x0y0",
+        "action_int": 1,
+        "in_subgraph": false
+      },
+      {
+        "step": 18,
+        "from_short": "e426bb2f",
+        "to_short": "f68983e4",
+        "label": "a6_x2y3",
+        "action_int": 9,
+        "in_subgraph": false
+      },
+      {
+        "step": 19,
+        "from_short": "f68983e4",
+        "to_short": "6b897e7c",
+        "label": "a6_x2y3",
+        "action_int": 9,
+        "in_subgraph": false
+      },
+      {
+        "step": 20,
+        "from_short": "6b897e7c",
+        "to_short": "87d2eff3",
+        "label": "a6_x1y2",
+        "action_int": 4,
+        "in_subgraph": false
+      },
+      {
+        "step": 21,
+        "from_short": "87d2eff3",
+        "to_short": "3178894a",
+        "label": "a6_x2y1",
+        "action_int": 7,
+        "in_subgraph": false
+      },
+      {
+        "step": 22,
+        "from_short": "3178894a",
+        "to_short": "c60f3138",
+        "label": "a6_x1y1",
+        "action_int": null,
+        "in_subgraph": false
+      },
+      {
+        "step": 23,
+        "from_short": "c60f3138",
+        "to_short": "2a286cfe",
+        "label": "a6_x1y1",
+        "action_int": null,
+        "in_subgraph": false
+      },
+      {
+        "step": 24,
+        "from_short": "2a286cfe",
+        "to_short": "9a3db37e",
+        "label": "a6_x1y3",
+        "action_int": 5,
+        "in_subgraph": false
+      },
+      {
+        "step": 25,
+        "from_short": "9a3db37e",
+        "to_short": "33dba81f",
+        "label": "a6_x0y3",
+        "action_int": null,
+        "in_subgraph": false
+      },
+      {
+        "step": 26,
+        "from_short": "33dba81f",
+        "to_short": "143e1463",
+        "label": "a6_x2y2",
+        "action_int": 8,
+        "in_subgraph": false
+      },
+      {
+        "step": 27,
+        "from_short": "143e1463",
+        "to_short": "5730bc39",
+        "label": "a6_x3y2",
+        "action_int": 10,
+        "in_subgraph": false
+      },
+      {
+        "step": 28,
+        "from_short": "5730bc39",
+        "to_short": "91a3bc46",
+        "label": "a6_x2y1",
+        "action_int": 7,
+        "in_subgraph": false
+      },
+      {
+        "step": 29,
+        "from_short": "91a3bc46",
+        "to_short": "f4a97440",
+        "label": "a6_x0y3",
+        "action_int": null,
+        "in_subgraph": false
+      },
+      {
+        "step": 30,
+        "from_short": "f4a97440",
+        "to_short": "bbc72e1d",
+        "label": "a6_x1y2",
+        "action_int": 4,
+        "in_subgraph": false
+      },
+      {
+        "step": 31,
+        "from_short": "bbc72e1d",
+        "to_short": "750d9d83",
+        "label": "a6_x1y2",
+        "action_int": 4,
+        "in_subgraph": true
+      },
+      {
+        "step": 32,
+        "from_short": "750d9d83",
+        "to_short": "8913cec2",
+        "label": "a6_x3y2",
+        "action_int": 10,
+        "in_subgraph": true
+      },
+      {
+        "step": 33,
+        "from_short": "8913cec2",
+        "to_short": "d83db9dc",
+        "label": "a6_x1y3",
+        "action_int": 5,
+        "in_subgraph": true
+      },
+      {
+        "step": 34,
+        "from_short": "d83db9dc",
+        "to_short": "f06bfd56",
+        "label": "a6_x3y2",
+        "action_int": 10,
+        "in_subgraph": true
+      },
+      {
+        "step": 35,
+        "from_short": "f06bfd56",
+        "to_short": "600a5da7",
+        "label": "a6_x0y0",
+        "action_int": 1,
+        "in_subgraph": true
+      },
+      {
+        "step": 36,
+        "from_short": "600a5da7",
+        "to_short": "ebed0190",
+        "label": "a6_x0y1",
+        "action_int": 2,
+        "in_subgraph": true
+      },
+      {
+        "step": 37,
+        "from_short": "ebed0190",
+        "to_short": "7831bd20",
+        "label": "a6_x0y2",
+        "action_int": 3,
+        "in_subgraph": true
+      },
+      {
+        "step": 38,
+        "from_short": "7831bd20",
+        "to_short": "0381b4ce",
+        "label": "a6_x1y3",
+        "action_int": 5,
+        "in_subgraph": true
+      },
+      {
+        "step": 39,
+        "from_short": "0381b4ce",
+        "to_short": "15f088b9",
+        "label": "a6_x1y2",
+        "action_int": 4,
+        "in_subgraph": true
+      },
+      {
+        "step": 40,
+        "from_short": "15f088b9",
+        "to_short": "12d12e0d",
+        "label": "a6_x0y1",
+        "action_int": 2,
+        "in_subgraph": true
+      },
+      {
+        "step": 41,
+        "from_short": "12d12e0d",
+        "to_short": "4913384e",
+        "label": "a6_x3y2",
+        "action_int": 10,
+        "in_subgraph": true
+      },
+      {
+        "step": 42,
+        "from_short": "4913384e",
+        "to_short": "6d2dcc95",
+        "label": "a6_x0y2",
+        "action_int": 3,
+        "in_subgraph": true
+      },
+      {
+        "step": 43,
+        "from_short": "6d2dcc95",
+        "to_short": "356d1aa7",
+        "label": "a6_x2y0",
+        "action_int": 6,
+        "in_subgraph": true
+      },
+      {
+        "step": 44,
+        "from_short": "356d1aa7",
+        "to_short": "f3391f84",
+        "label": "a6_x2y3",
+        "action_int": 9,
+        "in_subgraph": true
+      },
+      {
+        "step": 45,
+        "from_short": "f3391f84",
+        "to_short": "e17e024b",
+        "label": "a6_x2y1",
+        "action_int": 7,
+        "in_subgraph": true
+      },
+      {
+        "step": 46,
+        "from_short": "e17e024b",
+        "to_short": "861c30d1",
+        "label": "a6_x2y1",
+        "action_int": 7,
+        "in_subgraph": true
+      },
+      {
+        "step": 47,
+        "from_short": "861c30d1",
+        "to_short": "c9876b84",
+        "label": "a6_x1y2",
+        "action_int": 4,
+        "in_subgraph": true
+      },
+      {
+        "step": 48,
+        "from_short": "c9876b84",
+        "to_short": "f92b3d66",
+        "label": "a6_x2y2",
+        "action_int": 8,
+        "in_subgraph": true
+      },
+      {
+        "step": 49,
+        "from_short": "f92b3d66",
+        "to_short": "dfee8d2b",
+        "label": "a6_x3y3",
+        "action_int": 11,
+        "in_subgraph": true
+      }
+    ],
+    "note": "shortest path in observed state-space (BFS on Phase B graph)"
+  }
+}

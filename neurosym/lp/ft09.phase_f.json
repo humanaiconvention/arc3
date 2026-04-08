@@ -1,0 +1,9 @@
+{
+  "game": "ft09",
+  "pddl": null,
+  "pyperplan": null,
+  "graph_bfs": {
+    "found": false,
+    "note": "no terminal states in graph"
+  }
+}

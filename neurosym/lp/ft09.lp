@@ -1,0 +1,40 @@
+% Generated from ft09.graph.json
+% 9 nodes; 10 real transitions (42 self-loops dropped); 7 effective labels
+% no-op labels (self-loop only, pruned): ['a6_x0y0', 'a6_x0y1', 'a6_x0y2', 'a6_x0y3', 'a6_x1y0', 'a6_x1y1', 'a6_x1y3', 'a6_x2y1', 'a6_x3y1']
+numedges(10).
+node(0).
+node(1).
+node(2).
+node(3).
+node(4).
+node(5).
+node(6).
+node(7).
+node(8).
+labelname(1,"a6_x1y2").
+labelname(2,"a6_x2y0").
+labelname(3,"a6_x2y2").
+labelname(4,"a6_x2y3").
+labelname(5,"a6_x3y0").
+labelname(6,"a6_x3y2").
+labelname(7,"a6_x3y3").
+edge((3,4)).
+tlabel((3,4),5).
+edge((6,7)).
+tlabel((6,7),6).
+edge((2,3)).
+tlabel((2,3),7).
+edge((4,5)).
+tlabel((4,5),3).
+edge((8,7)).
+tlabel((8,7),4).
+edge((5,6)).
+tlabel((5,6),3).
+edge((7,8)).
+tlabel((7,8),5).
+edge((0,1)).
+tlabel((0,1),7).
+edge((7,8)).
+tlabel((7,8),2).
+edge((1,2)).
+tlabel((1,2),1).

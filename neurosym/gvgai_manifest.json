@@ -1,0 +1,117 @@
+{
+  "version": "v1",
+  "description": "Authoritative level-mechanic manifest for curated GVGAI games. Each level introduces exactly one new mechanic; all prior mechanics remain active. Created before rollout generation — mechanic labels are authored, not inferred from trajectories.",
+  "games": [
+    {
+      "game": "realsokoban",
+      "family": "spatial-puzzle",
+      "levels": [
+        {
+          "level_id": 1,
+          "new_mechanic_id": "push_to_goal",
+          "new_mechanic_desc": "Push a single box onto a single goal tile. Basic push-and-place mechanics.",
+          "prior_mechanics_active": [],
+          "all_mechanics_active": ["push_to_goal"]
+        },
+        {
+          "level_id": 2,
+          "new_mechanic_id": "corner_deadlock",
+          "new_mechanic_desc": "Irreversible corner traps — a box pushed into a corner cannot be retrieved. Must anticipate and avoid.",
+          "prior_mechanics_active": ["push_to_goal"],
+          "all_mechanics_active": ["push_to_goal", "corner_deadlock"]
+        },
+        {
+          "level_id": 3,
+          "new_mechanic_id": "tunnel_ordering",
+          "new_mechanic_desc": "One-tile-wide corridor requires boxes pushed in strict order; wrong order deadlocks the tunnel.",
+          "prior_mechanics_active": ["push_to_goal", "corner_deadlock"],
+          "all_mechanics_active": ["push_to_goal", "corner_deadlock", "tunnel_ordering"]
+        },
+        {
+          "level_id": 4,
+          "new_mechanic_id": "staging_zone",
+          "new_mechanic_desc": "Multi-room layout requires staging a box in a temporary holding zone before routing it to the goal.",
+          "prior_mechanics_active": ["push_to_goal", "corner_deadlock", "tunnel_ordering"],
+          "all_mechanics_active": ["push_to_goal", "corner_deadlock", "tunnel_ordering", "staging_zone"]
+        },
+        {
+          "level_id": 5,
+          "new_mechanic_id": "combined_constraints",
+          "new_mechanic_desc": "All prior constraints active simultaneously in one complex map. No new mechanic — integration level.",
+          "prior_mechanics_active": ["push_to_goal", "corner_deadlock", "tunnel_ordering", "staging_zone"],
+          "all_mechanics_active": ["push_to_goal", "corner_deadlock", "tunnel_ordering", "staging_zone", "combined_constraints"],
+          "integration_level": true
+        }
+      ]
+    },
+    {
+      "game": "zelda",
+      "family": "navigation-action",
+      "levels": [
+        {
+          "level_id": 1,
+          "new_mechanic_id": "reach_exit",
+          "new_mechanic_desc": "Navigate to the exit door. No enemies, no key. Pure spatial navigation.",
+          "prior_mechanics_active": [],
+          "all_mechanics_active": ["reach_exit"]
+        },
+        {
+          "level_id": 2,
+          "new_mechanic_id": "key_gate",
+          "new_mechanic_desc": "Pick up key before reaching exit. Introduces object-affordance dependency (key unlocks exit).",
+          "prior_mechanics_active": ["reach_exit"],
+          "all_mechanics_active": ["reach_exit", "key_gate"]
+        },
+        {
+          "level_id": 3,
+          "new_mechanic_id": "enemy_avoidance",
+          "new_mechanic_desc": "Enemies patrol; contact is fatal. Must time movement to avoid without losing key or exit route.",
+          "prior_mechanics_active": ["reach_exit", "key_gate"],
+          "all_mechanics_active": ["reach_exit", "key_gate", "enemy_avoidance"]
+        },
+        {
+          "level_id": 4,
+          "new_mechanic_id": "weapon_use",
+          "new_mechanic_desc": "Sword available; enemies can be defeated. Introduces attack timing as an alternative to pure avoidance.",
+          "prior_mechanics_active": ["reach_exit", "key_gate", "enemy_avoidance"],
+          "all_mechanics_active": ["reach_exit", "key_gate", "enemy_avoidance", "weapon_use"]
+        },
+        {
+          "level_id": 5,
+          "new_mechanic_id": "combined_routing",
+          "new_mechanic_desc": "Key, combat, and routing all required simultaneously. Integration level — no new mechanic.",
+          "prior_mechanics_active": ["reach_exit", "key_gate", "enemy_avoidance", "weapon_use"],
+          "all_mechanics_active": ["reach_exit", "key_gate", "enemy_avoidance", "weapon_use", "combined_routing"],
+          "integration_level": true
+        }
+      ]
+    }
+  ],
+  "rollout_targets": {
+    "successful_per_level": 500,
+    "failed_per_level": 500,
+    "boundary_focused_per_level": 200,
+    "total_per_game": 6000,
+    "total_all_games": 12000,
+    "policy_mix": {
+      "scripted_or_trained": 0.65,
+      "exploratory_weak": 0.25,
+      "random_control": 0.10
+    }
+  },
+  "storage": {
+    "frame_size": "64x64",
+    "frame_format": "PNG or WebP lossless",
+    "action_dtype": "uint8",
+    "reward_dtype": "float16",
+    "metadata_format": "JSONL",
+    "target_compressed_gb": 16
+  },
+  "reproducibility": {
+    "pin_gvgai_commit": true,
+    "pin_game_file_checksums": true,
+    "save_rng_seed_per_episode": true,
+    "save_policy_checkpoint_hash": true,
+    "verification_script": "verify_level_mechanics.py"
+  }
+}

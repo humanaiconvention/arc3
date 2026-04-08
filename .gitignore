@@ -1,0 +1,22 @@
+# Large data directories — never commit
+data/
+external/
+
+# Kaggle kernel staging dirs
+kaggle/kernels/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
