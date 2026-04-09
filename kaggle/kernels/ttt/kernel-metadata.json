@@ -1,0 +1,16 @@
+{
+  "id": "benhaslam/arc3-stage3-ttt",
+  "title": "arc3-stage3-ttt",
+  "code_file": "arc3_muzero_ttt.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [
+    "benhaslam/arc3-stage2-checkpoint"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}
