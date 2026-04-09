@@ -9,7 +9,8 @@
   "enable_tpu": "false",
   "enable_internet": "true",
   "dataset_sources": [
-    "benhaslam/arc3-stage2-checkpoint"
+    "benhaslam/arc3-stage2-checkpoint",
+    "benhaslam/arc3-neurosym"
   ],
   "competition_sources": [],
   "kernel_sources": []
