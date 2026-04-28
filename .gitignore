@@ -1,6 +1,41 @@
 # Large data directories — never commit
 data/
 external/
+checkpoints/
+recordings/
+results/
+content/
+environment_files/
+.cache/
+
+# Experiment outputs and local analysis artifacts
+*.log
+*.out
+*.pid
+*.npy
+*.npz
+*.checkpoint
+progress.json
+overnight_*/
+scorecards/*.log
+
+# Local scripts and runtime wrappers
+run_8hr.sh
+run_marathon.sh
+run_overnight.sh
+overnight.ps1
+
+# Private notes / handoffs / session writeups
+/STATUS.md
+/ARC3_AGENT_PROMPT.md
+/ARC3_HANDOFF.md
+/FRAME_ANALYSIS_SUMMARY.md
+/MORNING_SUMMARY_*.md
+/SESSION_*_HANDOFF.md
+/SESSION_*_SUMMARY*.md
+/SESSION_*_FINAL*.md
+/LP85_*.md
+/TR87_*.md
 
 # Kaggle kernel staging dirs
 kaggle/kernels/
@@ -16,6 +51,14 @@ venv/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Secrets / local env
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.secrets.*
 
 # OS
 .DS_Store

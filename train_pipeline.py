@@ -19,13 +19,35 @@ Hardware defaults tuned for RTX 4500 Pro 32 GB / 62 GB RAM / 28 vCPU:
   --max-steps 2000     richer per-trial sample
   --compile            torch.compile reduce-overhead (~25% speedup on Ada)
 """
-import argparse, copy, datetime, pathlib, pickle, random, sys, time
+import argparse, copy, datetime, json, logging, os, pathlib, pickle, random, sys, time, types
 import numpy as np
 import torch
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+    datefmt="%H:%M:%S",
+)
+_log = logging.getLogger("train_pipeline")
+
+
+def _load_checkpoint_compat(path: pathlib.Path):
+    """Load checkpoints across OS boundaries by remapping pickled pathlib types."""
+    if os.name != "nt":
+        with path.open("rb") as f:
+            return pickle.load(f)
+
+    orig_posix = pathlib.PosixPath
+    try:
+        pathlib.PosixPath = pathlib.WindowsPath
+        with path.open("rb") as f:
+            return pickle.load(f)
+    finally:
+        pathlib.PosixPath = orig_posix
+
 # ── CLI args ─────────────────────────────────────────────────────────────────
 p = argparse.ArgumentParser()
-p.add_argument("--atari-dir",   required=True,  help="Root dir of Atari-HEAD data")
+p.add_argument("--atari-dir",   default=None,   help="Root dir of Atari-HEAD data (optional; omit for ARC3-only Stage 1)")
 p.add_argument("--arc3-dir",    required=True,  help="Dir of ARC3 recording JSONLs")
 p.add_argument("--muzero-dir",  default="./muzero-general")
 p.add_argument("--out-dir",     default="./results")
@@ -41,6 +63,10 @@ p.add_argument("--stage1-ckpt",  default=None,
                help="Skip Stage 1 and load this checkpoint instead")
 p.add_argument("--compile",      action="store_true",
                help="torch.compile the network (Ada/Ada+ ~25%% speedup)")
+p.add_argument("--skip-action-blind", action=argparse.BooleanOptionalAction, default=True,
+               help="Skip Format-B recordings where all actions are id=0/data={} "
+                    "(old maroon_solver style with missing action labels). "
+                    "Pass --no-skip-action-blind to include them.")
 args = p.parse_args()
 
 MUZERO_DIR = pathlib.Path(args.muzero_dir).resolve()
@@ -51,7 +77,23 @@ for d in [MUZERO_DIR, pathlib.Path(__file__).parent / "neurosym"]:
     if str(d) not in sys.path:
         sys.path.insert(0, str(d))
 
-import ray
+try:
+    import ray
+except ImportError:
+    class _RayShim(types.SimpleNamespace):
+        """Minimal Ray surface for local-only training on unsupported Python builds."""
+
+        @staticmethod
+        def remote(obj):
+            return obj
+
+        @staticmethod
+        def get(value):
+            return value
+
+    ray = _RayShim()
+    sys.modules["ray"] = ray
+    _log.warning("ray is unavailable; using local-only shim for offline training")
 from arc3_game import MuZeroConfig
 from data_pipeline import ARC3Dataset, AtariHeadDataset, apply_domain_upweight
 
@@ -79,16 +121,43 @@ _sys.modules['trainer']        = _trainer
 _sys.modules['replay_buffer']  = _replay
 _sys.modules['shared_storage'] = shared_storage
 
+# Unified action space across all ARC-AGI-3 games (4×4 click grid)
+_N_ACTIONS = 16
+
+
 def to_mz(h):
+    """
+    Convert a data_pipeline.GameHistory to muzero-general's GameHistory.
+
+    muzero-general's make_target accesses reward_history[len(root_values)] and
+    action_history[len(root_values)], so both lists must be one element longer
+    than root_values.  data_pipeline produces equal-length lists, so we append
+    a trailing dummy 0 to reward_history and action_history here.
+    """
     mz = MZHistory()
     mz.observation_history = h.observation_history
-    mz.action_history      = h.action_history
-    mz.reward_history      = h.reward_history
+    mz.action_history      = list(h.action_history) + [0]        # trailing dummy
+    mz.reward_history      = list(h.reward_history) + [0.0]      # trailing dummy
     mz.to_play_history     = h.to_play_history
-    mz.child_visits        = h.child_visits
+    # Align child_visits to the current model action space. Some older checkpoints
+    # were trained with a slightly larger head than the current click-grid default.
+    _target_n = _N_ACTIONS
+    if h.child_visits and len(h.child_visits[0]) != _target_n:
+        adjusted = []
+        for v in h.child_visits:
+            if len(v) < _target_n:
+                adjusted.append(v + [0.0] * (_target_n - len(v)))
+            else:
+                adjusted.append(v[:_target_n])
+        mz.child_visits = adjusted
+    else:
+        mz.child_visits = h.child_visits
     mz.root_values         = h.root_values
-    mz.priorities          = getattr(h, "priorities", None)
-    mz.game_priority       = getattr(h, "game_priority", None)
+    # Ensure priorities is a valid array (uniform) — None breaks PER sampling
+    raw_prio = getattr(h, "priorities", None)
+    n_steps  = len(h.root_values) if h.root_values else len(h.action_history)
+    mz.priorities          = raw_prio if raw_prio is not None else np.ones(n_steps, dtype=np.float32)
+    mz.game_priority       = getattr(h, "game_priority", None) or 1.0
     return mz
 
 def make_checkpoint(weights=None):
@@ -113,13 +182,13 @@ def train(config, seed_histories, label="stage", warm_weights=None,
         torch.compile(mode='reduce-overhead') for ~20-30% kernel-fusion gain
         on Ada Lovelace / Ampere+.
     """
-    print(f"\n{'='*60}")
+    print(f"\n{'='*60}", flush=True)
     print(f"  {label}: {config.training_steps:,} steps | "
-          f"batch={config.batch_size} | lr={config.lr_init}")
-    print(f"  seed histories: {len(seed_histories)}")
+          f"batch={config.batch_size} | lr={config.lr_init}", flush=True)
+    print(f"  seed histories: {len(seed_histories)}", flush=True)
     print(f"  compile={use_compile} | gpu={config.train_on_gpu} | "
-          f"bf16={'yes' if config.train_on_gpu and torch.cuda.is_bf16_supported() else 'no'}")
-    print(f"{'='*60}")
+          f"bf16={'yes' if config.train_on_gpu and torch.cuda.is_bf16_supported() else 'no'}", flush=True)
+    print(f"{'='*60}", flush=True)
 
     ckpt = make_checkpoint()
     net  = models.MuZeroNetwork(config)
@@ -153,6 +222,7 @@ def train(config, seed_histories, label="stage", warm_weights=None,
     t0 = time.time()
     last_log = 0
     LOG_EVERY = 500
+    _progress_path = OUT_DIR / "progress.json"
 
     while trainer.training_step < config.training_steps:
         trainer.update_lr()
@@ -170,14 +240,43 @@ def train(config, seed_histories, label="stage", warm_weights=None,
         if step - last_log >= LOG_EVERY:
             elapsed = (time.time() - t0) / 60
             steps_per_sec = step / max(1, time.time() - t0)
-            print(f"  step {step:6,}/{config.training_steps:,} "
-                  f"| loss={total_loss:.4f} | {elapsed:.1f}m "
-                  f"| {steps_per_sec:.0f} steps/s")
+            eta_min = (config.training_steps - step) / max(1, steps_per_sec) / 60
+            msg = (f"  step {step:6,}/{config.training_steps:,} "
+                   f"| loss={total_loss:.4f} | {elapsed:.1f}m elapsed "
+                   f"| {steps_per_sec:.1f} steps/s | eta {eta_min:.1f}m")
+            print(msg, flush=True)
+            # Write live progress file — readable via: Get-Content D:\arc3\results\<run>\progress.json
+            try:
+                _progress_path.write_text(json.dumps({
+                    "label":      label,
+                    "step":       step,
+                    "total":      config.training_steps,
+                    "pct":        round(100 * step / config.training_steps, 1),
+                    "loss":       round(float(total_loss), 4),
+                    "elapsed_m":  round(elapsed, 1),
+                    "steps_per_s": round(steps_per_sec, 1),
+                    "eta_m":      round(eta_min, 1),
+                    "ts":         datetime.datetime.now().isoformat(timespec="seconds"),
+                }, indent=2))
+            except Exception as _e:
+                _log.warning("progress.json write failed: %s", _e)
             last_log = step
 
     weights = trainer.model.get_weights()
-    print(f"  {label} complete in {(time.time()-t0)/60:.1f}m  "
-          f"({trainer.training_step / (time.time()-t0):.0f} steps/s avg)")
+    elapsed_total = (time.time() - t0) / 60
+    rate = trainer.training_step / max(1, time.time() - t0)
+    print(f"  {label} complete in {elapsed_total:.1f}m  ({rate:.0f} steps/s avg)", flush=True)
+    # Mark progress file as done
+    try:
+        _progress_path.write_text(json.dumps({
+            "label": label, "step": trainer.training_step,
+            "total": config.training_steps, "pct": 100.0,
+            "status": "complete", "elapsed_m": round(elapsed_total, 1),
+            "steps_per_s": round(rate, 1),
+            "ts": datetime.datetime.now().isoformat(timespec="seconds"),
+        }, indent=2))
+    except Exception as _e:
+        _log.warning("progress.json final write failed: %s", _e)
     return weights
 
 
@@ -187,37 +286,44 @@ stage1_path = OUT_DIR / f"stage1_pretrain_{ts}.checkpoint"
 
 if args.stage1_ckpt:
     print(f"Loading Stage 1 from {args.stage1_ckpt}")
-    with open(args.stage1_ckpt, "rb") as f:
-        s1 = pickle.load(f)
+    s1 = _load_checkpoint_compat(pathlib.Path(args.stage1_ckpt))
     stage1_weights = s1["weights"]
     stage1_config  = s1["config"]
 else:
     print("\n─── Loading data ────────────────────────────────────────")
-    arc3_ds   = ARC3Dataset(args.arc3_dir)
+    arc3_ds   = ARC3Dataset(args.arc3_dir, skip_action_blind=args.skip_action_blind)
     arc3_hist = arc3_ds.load_all(verbose=True)
 
-    atari_ds   = AtariHeadDataset(args.atari_dir,
-                                  max_trials_per_game=args.max_trials,
-                                  max_steps_per_trial=args.max_steps)
-    atari_hist = atari_ds.load_all(verbose=True)
+    if args.atari_dir:
+        atari_ds   = AtariHeadDataset(args.atari_dir,
+                                      max_trials_per_game=args.max_trials,
+                                      max_steps_per_trial=args.max_steps)
+        atari_hist = atari_ds.load_all(verbose=True)
+        print(f"\nRaw counts: {len(atari_hist)} Atari, {len(arc3_hist)} ARC3")
+        all_hist = atari_hist + apply_domain_upweight(arc3_hist, upweight=3.0)
+    else:
+        print(f"\nNo --atari-dir provided — Stage 1 trains on ARC3 data only ({len(arc3_hist)} histories)")
+        all_hist = list(arc3_hist)
 
-    print(f"\nRaw counts: {len(atari_hist)} Atari, {len(arc3_hist)} ARC3")
-
-    all_hist = atari_hist + apply_domain_upweight(arc3_hist, upweight=3.0)
     random.shuffle(all_hist)
     print(f"Mixed corpus: {len(all_hist)} histories")
 
     config1 = MuZeroConfig(game_id="pretrain", n_bins=4)
-    config1.action_space        = list(range(18))
+    config1.action_space        = list(range(16))  # 4×4 click grid (largest ARC3 action space)
     config1.observation_shape   = (1, 64, 64)
     config1.training_steps      = args.stage1_steps
     config1.batch_size          = args.batch          # default 2048
 
-    # ── Network: 4× capacity vs. original 3/64 baseline ─────────────────────
-    # blocks=6, channels=128 → ~14 GB VRAM at batch=2048; well within 32 GB.
-    # Larger rep/dynamics nets generalise better across Atari + ARC3 domains.
-    config1.blocks              = 6
-    config1.channels            = 128
+    # ── Network: IMPALA CNN encoder ──────────────────────────────────────────
+    # Replaces the old ResNet+DownsampleCNN backbone.
+    # IMPALA: 3-stack CNN (no BatchNorm) → (B, 256, 1, 1) hidden state.
+    # No BatchNorm → stable TTT fine-tuning under small batches.
+    # Dynamics/prediction heads work on 1×1 spatial; block_output_size = channels.
+    config1.network              = "impala"
+    config1.impala_channels      = (16, 32, 32)
+    config1.impala_out_dim       = 256
+    config1.blocks               = 1                  # residual blocks in dyn/pred heads
+    config1.channels             = 256                # must equal impala_out_dim
     config1.reduced_channels_reward  = 32
     config1.reduced_channels_value   = 32
     config1.reduced_channels_policy  = 32
@@ -253,7 +359,7 @@ else:
 
 # ── STAGE 2: domain-adaptive fine-tuning ─────────────────────────────────────
 print("\n─── Stage 2: fine-tuning on ARC3 recordings ─────────────────")
-arc3_ds   = ARC3Dataset(args.arc3_dir)
+arc3_ds   = ARC3Dataset(args.arc3_dir, skip_action_blind=args.skip_action_blind)
 arc3_hist = arc3_ds.load_all(verbose=True)
 
 random.seed(42); random.shuffle(arc3_hist)
@@ -304,11 +410,16 @@ print(f"Augmented train: {len(train_aug)} histories")
 
 config2 = MuZeroConfig(game_id="finetune", n_bins=4)
 config2.action_space        = stage1_config.action_space
+_N_ACTIONS = len(stage1_config.action_space)
 config2.observation_shape   = stage1_config.observation_shape
 config2.network             = stage1_config.network
-config2.downsample          = stage1_config.downsample
+if config2.network != "impala":
+    config2.downsample      = stage1_config.downsample
 config2.blocks              = stage1_config.blocks
 config2.channels            = stage1_config.channels
+# IMPALA-specific fields (ignored when network != "impala")
+config2.impala_channels     = getattr(stage1_config, "impala_channels", (16, 32, 32))
+config2.impala_out_dim      = getattr(stage1_config, "impala_out_dim", 256)
 
 # Mirror the larger head dims from Stage 1
 config2.reduced_channels_reward  = stage1_config.reduced_channels_reward
@@ -319,7 +430,7 @@ config2.resnet_fc_value_layers   = stage1_config.resnet_fc_value_layers
 config2.resnet_fc_policy_layers  = stage1_config.resnet_fc_policy_layers
 
 config2.training_steps      = args.stage2_steps      # default 50_000
-config2.batch_size          = 256                    # ARC3-only; 256 ~ 4 GB VRAM
+config2.batch_size          = args.batch             # same CLI flag as Stage 1
 config2.replay_buffer_size  = 4_000
 config2.num_unroll_steps    = 5
 config2.td_steps            = 10
