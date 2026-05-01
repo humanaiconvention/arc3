@@ -1,0 +1,54 @@
+{
+  "artifact": "arc3_policy_v5_evidence_ranker",
+  "created_utc": "2026-04-29T06:20:00Z",
+  "source_trial": "v3compact_unified_schema_cap32_s90_lora16_len1792",
+  "source_dataset": "benhaslam/arc3-action-evidence-v3-compact",
+  "source_results_dir": "D:\\kaggle\\results\\arc3_evidence_ranker_v3compact_unified_schema_cap32_s90_lora16_len1792",
+  "source_adapter_dir": "D:\\kaggle\\results\\arc3_evidence_ranker_v3compact_unified_schema_cap32_s90_lora16_len1792\\arc3-gemma4-evidence-ranker-adapter-v3compact_unified_schema_cap32_s90_lora16_len1792",
+  "base_model": "gemma-4-e2b-it",
+  "task": "mixed_state_probe_frame_evidence_ranker",
+  "train_rows_original": 265,
+  "train_rows_balanced": 576,
+  "eval_rows": 27,
+  "train_loss": 2.1992962890201144,
+  "metrics": {
+    "top1_accuracy": 0.4074074074074074,
+    "top2_accuracy": 0.8148148148148148,
+    "mean_reciprocal_rank": 0.6518518518518519,
+    "parse_rate": 1.0,
+    "schema_rate": 1.0,
+    "distinct_top_actions": 5,
+    "dominant_top_action_fraction": 0.5555555555555556,
+    "mean_distribution_entropy_bits": 1.0842397855117862
+  },
+  "by_task": {
+    "ranking_top1": 0.5714285714285714,
+    "pairwise_preference_top1": 0.4375,
+    "probe_counteraction_top1": 0.0
+  },
+  "local_baselines": {
+    "text_all_top1": 0.3333333333333333,
+    "text_sp80_top1": 0.25,
+    "text_ranking_top1": 0.42857142857142855,
+    "text_pairwise_top1": 0.3125,
+    "text_probe_top1": 0.25
+  },
+  "anti_collapse_pass": true,
+  "scientific_success": true,
+  "live_use_policy": {
+    "status": "offline_and_runtime_passed_live_gate_no_win",
+    "default_enabled": false,
+    "enable_env": "ARC3_EVIDENCE_RANKER_ENABLE=1",
+    "absolute_python_required": "C:\\Users\\benja\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe",
+    "live_gate": {
+      "game": "vc33-5430563c",
+      "attempt_file": "D:\\arc3\\results\\meta\\games\\vc33\\attempts\\20260428_233809_evidence_ranker_guided_walk_direct_gate.json",
+      "steps": 3,
+      "lives_used": 0,
+      "won_any_level": false,
+      "parse_schema_ok": true,
+      "extra_arc_api_calls": 0
+    },
+    "notes": "Probe-counteraction top1 remains 0.0 and vc33 live gate did not win; use only as a ranker-guided proposal source with budget-neutral caps, inverse-pair guards, and direct existing-profile runners until latency and click-coordinate evidence improve."
+  }
+}
