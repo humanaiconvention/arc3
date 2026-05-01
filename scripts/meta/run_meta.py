@@ -30,7 +30,9 @@ import traceback
 
 # Ensure meta package imports work
 sys.stdout.reconfigure(line_buffering=True) if hasattr(sys.stdout, "reconfigure") else None
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+_scripts_dir = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(_scripts_dir))
+sys.path.insert(0, str(_scripts_dir.parent))  # repo root, for diloco_lab etc.
 
 from meta.budget import Budget
 from meta.characterize import characterize
@@ -88,6 +90,8 @@ STRATEGY_BUDGET_MULT = {
     "mover_toggle_walk": 1.5,       # directed schema iteration
     "policy_guided_walk": 0.5,      # learned policy — small step budget
     "policy_guided_walk_cnn": 0.5,  # CNN policy — small step budget
+    "evidence_ranker_guided_walk": 0.5,  # heavy inference, fixed low live budget
+    "timing_press": 1.5,               # phase1 ~18 resets + phase2 ~11 resets
 }
 
 
@@ -285,3 +289,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
